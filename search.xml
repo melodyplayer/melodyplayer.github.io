@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>mac单机部署mysql多实例</title>
+      <link href="/blog/2019/1004:mac%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2mysql%E5%A4%9A%E5%AE%9E%E4%BE%8B/"/>
+      <url>/blog/2019/1004:mac%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2mysql%E5%A4%9A%E5%AE%9E%E4%BE%8B/</url>
+      
+        <content type="html"><![CDATA[<p> 单机部署mysql多实例，需要用到 mysql 自带的 mysqld_multi 命令，在目录 support_files 下有 mysqld_multi.server 命令封装。</p><a id="more"></a><h4 id="mysql-版本：5-7-27"><a href="#mysql-版本：5-7-27" class="headerlink" title="mysql 版本：5.7.27"></a>mysql 版本：5.7.27</h4><h3 id="单机多实例配置"><a href="#单机多实例配置" class="headerlink" title="单机多实例配置"></a>单机多实例配置</h3><h4 id="手动创建-my-cnf-文件"><a href="#手动创建-my-cnf-文件" class="headerlink" title="手动创建 my.cnf 文件"></a>手动创建 my.cnf 文件</h4><p>mac 使用 dmg 文件直接安装，不会自动生成 my.cnf 文件，需要手动创建。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[mysqld_multi]</span><br><span class="line">mysqld     = /usr/local/mysql/bin/mysqld_safe</span><br><span class="line">mysqladmin = /usr/local/mysql/bin/mysqladmin</span><br><span class="line">user       = root</span><br><span class="line">password   = root</span><br><span class="line"></span><br><span class="line">[mysqld1]</span><br><span class="line">socket     = /tmp/mysql.sock1</span><br><span class="line">port       = 3311</span><br><span class="line">pid-file   = /usr/local/var/mysql/data/data1/hostname.pid1</span><br><span class="line">datadir    = /usr/local/var/mysql/data/data1</span><br><span class="line">language   = /usr/local/mysql/share/english</span><br><span class="line">user       = root</span><br></pre></td></tr></table></figure><h4 id="执行-mysqld-multi-server-start"><a href="#执行-mysqld-multi-server-start" class="headerlink" title="执行 mysqld_multi.server start"></a>执行 mysqld_multi.server start</h4><p>这时会在控制台显示出生成的密码，记住待会儿会进行修改。</p><h4 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root -P 3312 -p  -S /tmp/mysql.sock2 password</span><br></pre></td></tr></table></figure><h4 id="连接-mysql"><a href="#连接-mysql" class="headerlink" title="连接 mysql"></a>连接 mysql</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p -P 3312 -S /tmp/mysql.sock2</span><br></pre></td></tr></table></figure><h4 id="关闭mysql"><a href="#关闭mysql" class="headerlink" title="关闭mysql"></a>关闭mysql</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./mysqld_multi.server stop        #关闭所有</span><br><span class="line">./mysqld_multi.server stop 1      #关闭单个</span><br><span class="line">./mysqld_multi.server stop 1-2    #关闭某个范围的实例</span><br></pre></td></tr></table></figure><h3 id="单机多实例主从配置"><a href="#单机多实例主从配置" class="headerlink" title="单机多实例主从配置"></a>单机多实例主从配置</h3><p>必读：<a href="https://blog.51cto.com/superpcm/2094958" target="_blank" rel="noopener">MySQL的主从复制介绍及配置</a></p><p>具体执行顺序按照链接中的顺序操作即可。这里只谈在操作中采的坑以及核心要点。</p><ol><li><p>不要在命令行直接输入密码，例如：<code>mysql -u root -p &#39;root&#39; -P 3312 -S /tmp/mysql.sock2</code></p><p>解决方法：去掉-p后的 ‘root’。<code>mysql -u root -p -P 3312 -S /tmp/mysql.sock2</code></p></li><li><p>从库<code>Slave_IO_Running: Connecting</code> 问题</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Slave_IO_Running: Connecting</span><br><span class="line">Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure><p>解决方法：这个问题多半是未连接到主库专门用来复制的用户，检查用户名，用户权限等。</p></li><li><p>主库备份问题</p><p>关键在于了解参数的意义，可以指定某个数据库进行备份，也可以<code>-A</code>全部备份。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u root -p -S /tmp/mysql/mysql.sock1 -A  &gt; mysql_bak.2019-10-06.sql</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>线程池invokeAll方法详解</title>
       <link href="/blog/2019/0810:%E7%BA%BF%E7%A8%8B%E6%B1%A0invokeAll%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
       <url>/blog/2019/0810:%E7%BA%BF%E7%A8%8B%E6%B1%A0invokeAll%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/</url>
@@ -46,7 +65,7 @@
       <link href="/blog/2019/0716:%E6%97%8B%E5%BE%8B%E6%BC%94%E5%A5%8F%E7%8C%BF/"/>
       <url>/blog/2019/0716:%E6%97%8B%E5%BE%8B%E6%BC%94%E5%A5%8F%E7%8C%BF/</url>
       
-        <content type="html"><![CDATA[<p>开始自己的第一个博客，主要记录和分享在工作和学习中用到的一些技术，也会写一些兴趣爱好的文章，分享一些好听的音乐、精彩的电影等等。集工作学习与休闲一体，秉承简单、开放、匠心的精神，演奏程序猿的生活旋律。</p><p> <img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/2019/07/%E6%97%8B%E5%BE%8B%E6%BC%94%E5%A5%8F%E7%8C%BF/20190718230905.jpg" alt></p>]]></content>
+        <content type="html"><![CDATA[<p>开始自己的第一个博客，主要记录和分享在工作和学习中用到的一些技术，也会写一些兴趣爱好的文章，分享一些好听的音乐、精彩的电影等等。集工作学习与休闲一体，秉承简单、开放、匠心的精神，演奏程序猿的生活旋律。</p><a id="more"></a><p> <img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/2019/07/%E6%97%8B%E5%BE%8B%E6%BC%94%E5%A5%8F%E7%8C%BF/20190718230905.jpg" alt></p>]]></content>
       
       
       
