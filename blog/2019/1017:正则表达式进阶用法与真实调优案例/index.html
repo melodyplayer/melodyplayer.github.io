@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>正则表达式进阶用法与真实调优案例 | 旋律演奏猿</title>
+  
+  <meta name="keywords" content="博客">
+  
+  
+  <meta name="description" content="演奏程序猿的生活旋律">
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/favicon/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          旋律演奏猿
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogcategories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogtags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogarchives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="http://ganlu.ren/"
+                
+                  rel="nofollow"
+                
+                
+                id="http:ganlu.ren">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/blog/2019/1017:正则表达式进阶用法与真实调优案例/">
+        正则表达式进阶用法与真实调优案例
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://melodyplayer.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Aaron Hu</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-10-17</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p> 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？</p>
+<a id="more"></a>
+
+<h3 id="正则表达式基础"><a href="#正则表达式基础" class="headerlink" title="正则表达式基础"></a>正则表达式基础</h3><p>为节省版面直击要害，基础内容本文不作赘述，请点击以下链接查看：</p>
+<p><a href="http://tool.oschina.net/uploads/apidocs/jquery/regexp.html" target="_blank" rel="noopener">表达式全集</a></p>
+<p><a href="https://www.cnblogs.com/fozero/p/7868687.html" target="_blank" rel="noopener">史上最全常用正则表达式大全</a></p>
+<h3 id="真实案例：超级慢的正则表达式"><a href="#真实案例：超级慢的正则表达式" class="headerlink" title="真实案例：超级慢的正则表达式"></a>真实案例：超级慢的正则表达式</h3><p>常用的正则表达式一般几秒内解析完毕，那么见过3分钟都没解析出来的正则表达式吗？请往下看：</p>
+<h4 id="解析目标"><a href="#解析目标" class="headerlink" title="解析目标"></a>解析目标</h4><p>过滤请求中不合法的 uri（不包含参数），如包含特殊符号<code>- = + % ?</code>、多个斜杠<code>//</code>、中文等。</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p>正则表达式：<code>&quot;^(/?[A-Za-z0-9\\-]+/?[A-Za-z0-9\\-]+)+/?&quot;</code></p>
+<p>编写 java 代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有方法设置成静态的，方便 main 调用</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern URI_PATTERN = Pattern.compile(<span class="string">"^(/?[A-Za-z0-9\\-]+/?[A-Za-z0-9\\-]+)+/?)"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">validateUri</span><span class="params">(String uri)</span> </span>&#123;</span><br><span class="line">  Matcher m = URI_PATTERN.matcher(uri);</span><br><span class="line">  <span class="keyword">return</span> m.matches();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">validate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"开始。。。。。。"</span>);</span><br><span class="line">	System.out.println(validateUri(<span class="string">"/hotel/getUseraaaaaaaasdfasdfasdfasdfasdf+"</span>));</span><br><span class="line">  System.out.println(<span class="string">"结束。。。。。。"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行 validate 方法。</p>
+<h4 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h4><p>6C32G mac pro 跑了3分钟没跑完。。没耐心继续等待，直接中断。</p>
+<h4 id="最简单的解决方案"><a href="#最简单的解决方案" class="headerlink" title="最简单的解决方案"></a>最简单的解决方案</h4><p>简化正则表达式为：<code>^/?([-A-Za-z0-9]/?)+$</code></p>
+<p>但是我们需要知道为什么？如果就想在原来的基础上做修改，该怎么办？</p>
+<h3 id="原因探索：回溯匹配"><a href="#原因探索：回溯匹配" class="headerlink" title="原因探索：回溯匹配"></a>原因探索：回溯匹配</h3><h4 id="猜测：考虑字符太长，以及特殊符号的问题"><a href="#猜测：考虑字符太长，以及特殊符号的问题" class="headerlink" title="猜测：考虑字符太长，以及特殊符号的问题"></a>猜测：考虑字符太长，以及特殊符号的问题</h4><p>测试1：把 uri  中间的 aaaaaasdfsdf 等去掉后，只保留简单的 /hotel/getUser+，很明显速度提上来了。</p>
+<p>测试2：把 uri  中的 + 号提前，变成 /hotel/getUser+aaaaaaaasdfasdfasdfasdfasdf，速度也很快。</p>
+<h4 id="初步结论：非匹配字符的位置会影响正则表达式的执行效率"><a href="#初步结论：非匹配字符的位置会影响正则表达式的执行效率" class="headerlink" title="初步结论：非匹配字符的位置会影响正则表达式的执行效率"></a>初步结论：非匹配字符的位置会影响正则表达式的执行效率</h4><p>为此需要知道正则表达式的执行规则：回溯。</p>
+<p>比如要匹配的字符串是 <code>helloworld,hihaojava</code></p>
+<p>正则表达式是 <code>h(ello|ihao)java</code></p>
+<p>匹配过程：</p>
+<ol>
+<li>从字符串第一个字符 h 开始匹配，可以命中。</li>
+<li>接下来的匹配正则有2个分支 <code>ello</code> 和 <code>ihao</code> 。在 e 处打标记，先从左边的 <code>ello</code> 开始匹配，可以匹配字符串，但是到了 world 的 w 时，与正则中的 j 不一致，该分支匹配结束。接着回溯到刚刚的标记处，开始第二个分支 <code>ihao</code>，无法匹配，接下来正则会从 h 开始匹配字符串。</li>
+<li>从字符串的第二个字符 e 继续匹配，直到正则的第一个字符 h 匹配到字符串的 <code>,</code> 之后匹配成功。</li>
+<li>接着正则的2个分支执行匹配，最终只有 <code>ihao</code>匹配成功，最终匹配到的字符串是 hihaojava。</li>
+</ol>
+<p>看完了正则的匹配过程，就知道为什么前面代码中的正则匹配效率会那么低下了。每个字母都要匹配到最后的+才发现匹配失败，回溯后继续查找，如果忽略其他，只考虑字符串 getUseraaaaaaaasdfasdfasdfasdfasdf+ 和正则 <code>[-A-Za-z0-9]</code> 的影响，时间复杂度就已经为 n^2，类似于以下模拟代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟代码，真实情况远比这个复杂，这里仅为了方便理解</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">execute</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">  String reg = <span class="string">"-ABCDEFGHIJKMLNOPQRSTUVWSYZabcdefghijkmlnopqrstuvwsyz0123456789"</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> length = s.length();</span><br><span class="line">  <span class="keyword">for</span> (; i &lt; length; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; length; j++) &#123;</span><br><span class="line">      count ++;</span><br><span class="line">      String idx = s.substring(j, j + <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">if</span> (!reg.contains(idx)) &#123;</span><br><span class="line">        System.out.println(<span class="string">"匹配失败！特殊字符："</span> + idx);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println(<span class="string">"匹配字符："</span> + idx);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  System.out.println(<span class="string">"一共匹配了 "</span> + count + <span class="string">"次！字符串长度为 "</span> + length);</span><br><span class="line">  <span class="keyword">return</span> i != length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决方法：采用进阶匹配模式"><a href="#解决方法：采用进阶匹配模式" class="headerlink" title="解决方法：采用进阶匹配模式"></a>解决方法：采用进阶匹配模式</h3><h4 id="正则模式：贪婪、勉强、侵占"><a href="#正则模式：贪婪、勉强、侵占" class="headerlink" title="正则模式：贪婪、勉强、侵占"></a>正则模式：贪婪、勉强、侵占</h4><p>假定字符串为：aahelloworldhello</p>
+<ul>
+<li><p>贪婪模式（<code>.*he</code>）：将正则分为两个模式 p1 <code>.*</code> 以及 p2 <code>wo</code> 。</p>
+<ol>
+<li><p>第一轮匹配：p1读入所有字符串，那么p2就没什么都没匹配到。</p>
+</li>
+<li><p>第二轮匹配：字符串被分割为 aahelloworldhell 和 o，p1匹配子串1成功，p2匹配子串2失败。</p>
+</li>
+<li><p>直到字符串分割为 aahelloworld 和 hello时，两个正则模式都匹配成功。匹配到的子串为aahelloworldhe，停止匹配，返回结果。</p>
+</li>
+</ol>
+</li>
+<li><p>勉强模式（<code>.*?he</code>）：最小匹配方式。此时的正则模式为 <code>.*?</code> 和 <code>wo</code>。</p>
+<ol>
+<li>第一次匹配：p1由于是0或任意次，被忽略，用字符串整体去匹配 p2，当然失败。</li>
+<li>第二次匹配：p1读入第一个字符 a，匹配成功，剩余的 ahelloworldhello 由 p2匹配，失败。</li>
+<li>直到字符串分割为 aa 和 helloworldhello，两个正则模式都匹配成功。匹配子串 aahe，返回结果。</li>
+<li>继续匹配，直到字符串分隔为 lloworld 和 hello，匹配子串 lloworldhe，返回结果。</li>
+</ol>
+</li>
+<li><p>侵占模式（<code>.*+he</code>）：也叫占用模式。匹配开始时读入所有字符串和 p1匹配成功，但没有剩余字符串去和 p2匹配，因此返回匹配失败。</p>
+</li>
+</ul>
+<p>说明：贪婪模式和占有模式相比，贪婪模式会在只有部分匹配成功的条件下，依次从多到少减少匹配成功部分模式的匹配数量，将字符留给模式其他部分去匹配。而占用模式则是占有所有能匹配成功部分，绝不留给其他部分使用。</p>
+<h4 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_GREEDY = Pattern.compile(<span class="string">".*he"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_FORCED = Pattern.compile(<span class="string">".*?he"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_OCCUPIED = Pattern.compile(<span class="string">".*+he"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  String s = <span class="string">"aahelloworldhello"</span>;</span><br><span class="line">  Matcher greedy = PATTERN_GREEDY.matcher(s);</span><br><span class="line">  <span class="keyword">while</span> (greedy.find()) &#123;</span><br><span class="line">    System.out.println(<span class="string">"贪婪模式：匹配到子串 "</span> + greedy.group());</span><br><span class="line">    System.out.println(<span class="string">"贪婪模式：查找匹配到的子串在原始串中的索引位置 "</span> + greedy.start());</span><br><span class="line">    System.out.println(<span class="string">"贪婪模式：查找匹配到的子串最后一个字符串在原串中的位置 "</span> + greedy.end());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher forced = PATTERN_FORCED.matcher(s);</span><br><span class="line">  <span class="keyword">while</span> (forced.find()) &#123;</span><br><span class="line">    System.out.println(<span class="string">"勉强模式：匹配到子串 "</span> + forced.group());</span><br><span class="line">    System.out.println(<span class="string">"勉强模式：查找匹配到的子串在原始串中的索引位置 "</span> + forced.start());</span><br><span class="line">    System.out.println(<span class="string">"勉强模式：查找匹配到的子串最后一个字符串在原串中的位置 "</span> + forced.end());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher occupied = PATTERN_OCCUPIED.matcher(s);</span><br><span class="line">  System.out.println(<span class="string">"侵占模式：匹配原串任意位置返回的结果： "</span> + occupied.find());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回的结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">贪婪模式：匹配到子串 aahelloworldhe</span><br><span class="line">贪婪模式：查找匹配到的子串在原始串中的索引位置 <span class="number">0</span></span><br><span class="line">贪婪模式：查找匹配到的子串最后一个字符串在原串中的位置 <span class="number">14</span></span><br><span class="line">  </span><br><span class="line">勉强模式：匹配到子串 aahe</span><br><span class="line">勉强模式：查找匹配到的子串在原始串中的索引位置 <span class="number">0</span></span><br><span class="line">勉强模式：查找匹配到的子串最后一个字符串在原串中的位置 <span class="number">4</span></span><br><span class="line">勉强模式：匹配到子串 lloworldhe</span><br><span class="line">勉强模式：查找匹配到的子串在原始串中的索引位置 <span class="number">4</span></span><br><span class="line">勉强模式：查找匹配到的子串最后一个字符串在原串中的位置 <span class="number">14</span></span><br><span class="line">  </span><br><span class="line">侵占模式：匹配原串任意位置返回的结果： <span class="keyword">false</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个基础上，之前的难题迎刃而解。对于判断 uri 是否合法的问题，不需要正则做回溯操作，整体不合法则返回匹配失败即可，因此选用侵占模式，需要将之前的正则表达式改进一下。</p>
+<p><strong>原始正则表达式：<code>&quot;^(/?[A-Za-z0-9\\-]+/?[A-Za-z0-9\\-]+)+/?&quot;</code></strong></p>
+<p><strong>改进后的正则表达式：<code>&quot;^(/?[A-Za-z0-9\\-]++/?[A-Za-z0-9\\-]++)+/?&quot;</code></strong></p>
+<p>测试后发现速度变为了 ms 级，只增加 + 号，效果显而易见。</p>
+<h3 id="正则高级用法补充"><a href="#正则高级用法补充" class="headerlink" title="正则高级用法补充"></a>正则高级用法补充</h3><p>除了贪婪勉强侵占模式以外，补充一些其他的高级用法。</p>
+<h4 id="获取匹配-Capturing"><a href="#获取匹配-Capturing" class="headerlink" title="获取匹配 Capturing"></a>获取匹配 Capturing</h4><p>系统在幕后将所有的子模式匹配结果保存起来，供我们查找或替换。</p>
+<ul>
+<li><p>后向引用：使用 <code>\数字</code> 代表前面某个子模式的匹配内容，使用 <code>$数字</code> 代表变量。</p>
+<p>例如：匹配合法的 html 标记。</p>
+<p>正则：<code>&lt;h([1-6])&gt;.*?&lt;/h\1&gt;</code></p>
+<p>文本：&lt;h1&gt; text1&lt;/h1&gt;           &lt;h2&gt;text23&lt;/h3&gt;</p>
+<p>其中 &lt;h1&gt;text1&lt;/h1&gt; 被成功匹配。<code>\1</code>代表前面的子模式([1-6])的匹配结果1。</p>
+<p>常见应用：匹配重复单词 <code>(\w+) \1</code>，匹配合法的 html 标记。</p>
+</li>
+</ul>
+<h4 id="非获取匹配-Non-Capturing"><a href="#非获取匹配-Non-Capturing" class="headerlink" title="非获取匹配 Non-Capturing"></a>非获取匹配 Non-Capturing</h4><p>在子模式内部前面添加 <code>?:</code>。表示这个子模式的匹配内容不会被保存，不能用于后向引用中。</p>
+<p>例如：Windows 95 and Windows 98 are the successor. Then Windows 2000 and Windows Xp appeared. Windows Vista is the Latest version of the family.</p>
+<p>正则：<code>Windows (?:[\w]+\b)</code></p>
+<p>匹配：<strong>Windows 95</strong> and <strong>Windows 98</strong> are the successor. Then <strong>Windows 2000</strong> and <strong>Windows Xp</strong> appeared. <strong>Windows Vista</strong> is the Latest version of the family.</p>
+<p>结果：只匹配内容，但并未保存子匹配的结果</p>
+<ul>
+<li><p>正向肯定预查：在子模式内部前面加 <code>?=</code>，子模式仅仅作为条件限制，并不作为匹配结果输出，匹配子模式前面的内容。</p>
+<p>正则：<code>Windows (?=[\d]+\b)</code></p>
+<p>匹配：<strong>Windows</strong> 95 and <strong>Windows</strong> 98 are the successor. Then <strong>Windows</strong> 2000 and Windows Xp appeared. Windows Vista is the Latest version of the family.</p>
+</li>
+<li><p>正向否定预查：在子模式内部前面加 <code>?!</code>。</p>
+<p>正则：<code>Windows (?![\d]+\b)</code></p>
+<p>匹配：Windows 95 and Windows 98 are the successor. Then Windows 2000 and <strong>Windows</strong> Xp appeared. <strong>Windows</strong> Vista is the Latest version of the family.</p>
+</li>
+<li><p>反向肯定预查：在子模式内部前面加 <code>?&lt;=</code>，匹配子模式后面的结果作为匹配结果。</p>
+<p>例如：CNY:100.2 USD:222.1 USD:301.3 HKD:122.1 CNY:114.4</p>
+<p>正则：<code>(?&lt;=CNY:)\d+\.\d</code></p>
+<p>匹配：CNY:<strong>100.2</strong>  USD:222.1 USD:301.3 HKD:122.1 CNY:<strong>114.4</strong></p>
+</li>
+<li><p>反向否定预查：在子模式内部前面加 <code>?&lt;!</code></p>
+<p>正则：<code>(?&lt;!CNY:)\b\d+\.\d</code></p>
+<p>匹配：CNY:100.2 USD:<strong>222.1</strong> USD:<strong>301.3</strong> HKD:<strong>122.1</strong> CNY:114.4</p>
+</li>
+</ul>
+<h4 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h4><ul>
+<li>获取匹配</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"abc def aaa bbb"</span>.replaceAll(<span class="string">"(\\w+)\\s(\\w+)"</span>, <span class="string">"$2 $1"</span>);</span><br><span class="line"><span class="comment">// 结果是 def abc bbb aaa</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>非获取匹配</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN = Pattern.compile(<span class="string">"Windows (?:[\\w]+\\b)"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_POSITIVE_YES = Pattern.compile(<span class="string">"Windows (?=[\\d]+\\b)"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_POSITIVE_NO = Pattern.compile(<span class="string">"Windows (?![\\d]+\\b)"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_NEGATIVE_YES = Pattern.compile(<span class="string">"(?&lt;=CNY:)\\d+\\.\\d+"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_NEGATIVE_NO = Pattern.compile(<span class="string">"(?&lt;!CNY:)\\b\\d+\\.\\d+"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR1 = <span class="string">"Windows 95 and Windows 98 are the successor. Then Windows 2000 and Windows Xp appeared. Windows Vista is the Latest version of the family."</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR2 = <span class="string">"CNY:100.25 USD:222.16 USD:301.3 HKD:122.1 CNY:114.4"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  Matcher noCapturing = PATTERN.matcher(STR1);</span><br><span class="line">  System.out.println(<span class="string">"\n非获取匹配结果：---------"</span>);</span><br><span class="line">  <span class="keyword">while</span> (noCapturing.find()) &#123;</span><br><span class="line">    System.out.print(noCapturing.group() + <span class="string">"\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher positiveYes = PATTERN_POSITIVE_YES.matcher(STR1);</span><br><span class="line">  System.out.println(<span class="string">"\n正向肯定预查结果：---------"</span>);</span><br><span class="line">  <span class="keyword">while</span> (positiveYes.find()) &#123;</span><br><span class="line">    System.out.print(positiveYes.group() + <span class="string">"\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher positiveNo = PATTERN_POSITIVE_NO.matcher(STR1);</span><br><span class="line">  System.out.println(<span class="string">"\n正向否定预查结果：---------"</span>);</span><br><span class="line">  <span class="keyword">while</span> (positiveNo.find()) &#123;</span><br><span class="line">    System.out.print(positiveNo.group() + <span class="string">"\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher negativeYes = PATTERN_NEGATIVE_YES.matcher(STR2);</span><br><span class="line">  System.out.println(<span class="string">"\n负向肯定预查结果：---------"</span>);</span><br><span class="line">  <span class="keyword">while</span> (negativeYes.find()) &#123;</span><br><span class="line">    System.out.print(negativeYes.group() + <span class="string">"\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher negativeNo = PATTERN_NEGATIVE_NO.matcher(STR2);</span><br><span class="line">  System.out.println(<span class="string">"\n负向否定预查结果：---------"</span>);</span><br><span class="line">  <span class="keyword">while</span> (negativeNo.find()) &#123;</span><br><span class="line">    System.out.print(negativeNo.group() + <span class="string">"\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">非获取匹配结果：---------</span><br><span class="line">Windows 95	Windows 98	Windows 2000	Windows Xp	Windows Vista</span><br><span class="line">正向肯定预查结果：---------</span><br><span class="line">Windows 	Windows 	Windows</span><br><span class="line">正向否定预查结果：---------</span><br><span class="line">Windows 	Windows</span><br><span class="line">负向肯定预查结果：---------</span><br><span class="line">100.25	114.4</span><br><span class="line">负向否定预查结果：---------</span><br><span class="line">222.16	301.3	122.1</span><br></pre></td></tr></table></figure>
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-03T02:00:42+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>last updated at Nov 3, 2019</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/blog/tags/general/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>general</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://melodyplayer.github.io/blog/2019/1017:正则表达式进阶用法与真实调优案例/&title=正则表达式进阶用法与真实调优案例 | 旋律演奏猿&summary= 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://melodyplayer.github.io/blog/2019/1017:正则表达式进阶用法与真实调优案例/&title=正则表达式进阶用法与真实调优案例 | 旋律演奏猿&summary= 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://melodyplayer.github.io/blog/2019/1017:正则表达式进阶用法与真实调优案例/&title=正则表达式进阶用法与真实调优案例 | 旋律演奏猿&summary= 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/blog/2019/1004:mac单机部署mysql多实例/" rel="prev" title="mac单机部署mysql多实例">
+                                    
+                                        mac单机部署mysql多实例
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/blog/tags/mysql/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>mysql</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Comments</h4>
+      
+      
+      
+        <section id="comments">
+          <div id="gitalk-container"></div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '正则表达式进阶用法与真实调优案例',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/blog/archives/" href="/blog/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="blogarchives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          文章归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          开源项目
+        </a></li>
+      
+        <li><a class="flat-box" title="http://ganlu.ren/" href="http://ganlu.ren/"
+          
+            rel="nofollow"
+          
+          
+          id="http:ganlu.ren">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          主题文档
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于小站
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式基础"><span class="toc-text">正则表达式基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#真实案例：超级慢的正则表达式"><span class="toc-text">真实案例：超级慢的正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#解析目标"><span class="toc-text">解析目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试结果"><span class="toc-text">测试结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最简单的解决方案"><span class="toc-text">最简单的解决方案</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原因探索：回溯匹配"><span class="toc-text">原因探索：回溯匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#猜测：考虑字符太长，以及特殊符号的问题"><span class="toc-text">猜测：考虑字符太长，以及特殊符号的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#初步结论：非匹配字符的位置会影响正则表达式的执行效率"><span class="toc-text">初步结论：非匹配字符的位置会影响正则表达式的执行效率</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方法：采用进阶匹配模式"><span class="toc-text">解决方法：采用进阶匹配模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#正则模式：贪婪、勉强、侵占"><span class="toc-text">正则模式：贪婪、勉强、侵占</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码演示"><span class="toc-text">代码演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正则高级用法补充"><span class="toc-text">正则高级用法补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#获取匹配-Capturing"><span class="toc-text">获取匹配 Capturing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非获取匹配-Non-Capturing"><span class="toc-text">非获取匹配 Non-Capturing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码演示-1"><span class="toc-text">代码演示</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:melodyplayer@163.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/melodyplayer"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=63035382"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  <div>
+    Use
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    as theme
+    
+      , 
+      total visits
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      times
+    
+    . 
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('') {
+          $('').backstretch(
+          ["https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/background/background.png"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/background/background.png"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "f7b04d5efbb48ed07b87",
+      clientSecret: "60124337a5cae7e65a7836ed536ee5e9f40322f1",
+      repo: "melodyplayer.github.io",
+      owner: "melodyplayer",
+      admin: "melodyplayer",
+      
+        id: md5(location.pathname),  // Ensure uniqueness and length less than 50
+      
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+  </script>
+
+
+
+
+
+  <script src="/js/app.js"></script>
+
+
+  <script src="/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
