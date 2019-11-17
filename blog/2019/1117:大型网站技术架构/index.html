@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Archives: 2019 | 旋律演奏猿</title>
+  <title>大型网站技术架构 | 旋律演奏猿</title>
   
   <meta name="keywords" content="博客">
   
@@ -49,71 +49,7 @@
 <body>
   
   
-  <div class="cover-wrapper">
-    <cover class='cover  half'>
-      
-        
-  <h1 class='title'>Melody Player</h1>
-
-
-  <div class="m_search">
-    <form name="searchform" class="form u-search-form">
-      <input type="text" class="input u-search-input" placeholder="" />
-      <i class="icon fas fa-search fa-fw"></i>
-    </form>
-  </div>
-
-<div class='menu navgation'>
-  <ul class='h-list'>
-    
-      
-        <li>
-          <a class="nav home" href="/"
-            
-            
-            id="home">
-            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
-          </a>
-        </li>
-      
-        <li>
-          <a class="nav home" href="/projects/"
-            
-            
-            id="projects">
-            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
-          </a>
-        </li>
-      
-        <li>
-          <a class="nav home" href="http://ganlu.ren/"
-            
-              rel="nofollow"
-            
-            
-            id="http:ganlu.ren">
-            <i class='fas fa-link fa-fw'></i>&nbsp;友链
-          </a>
-        </li>
-      
-        <li>
-          <a class="nav home" href="/about/"
-            
-              rel="nofollow"
-            
-            
-            id="about">
-            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
-          </a>
-        </li>
-      
-    
-  </ul>
-</div>
-
-      
-    </cover>
-    <header class="l_header pure">
+  <header class="l_header pure">
   <div id="loading-bar-wrapper">
     <div id="loading-bar" class="pure"></div>
   </div>
@@ -277,38 +213,16 @@
 	</aside>
 <script>setLoadingBarProgress(40);</script>
 
-  </div>
 
 
-  <div class="l_body">
+  <div class="l_body nocover">
     <div class='body-wrapper'>
       <div class='l_main'>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
   
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -317,11 +231,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/blog/2019/1117:大型网站技术架构/">
-      大型网站技术架构
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/blog/2019/1117:大型网站技术架构/">
+        大型网站技术架构
+      </a>
+    </h1>
+  
 
 
       
@@ -360,6 +276,19 @@
         
           
             
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
 
           
         
@@ -376,527 +305,184 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>不逼自己一把，可能连本书都没时间看。。</p>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>不逼自己一把，可能连本书都没时间看。。</p>
 <p>终于把李智慧大佬的《大型网站技术架构——核心原理与案例分析》看完了，顺便梳理了全书脉络。本书出版于2013年，正是web系统辉煌的顶峰，虽然缺少移动互联网系统的相关介绍，但是系统架构的主题思想仍然是沿用的，即使是5G时代为可能出现的物联网信息大爆炸而设计的服务器系统。所以放眼现在，该书也是系统架构设计入门不可多得的“武功秘籍”。</p>
 <p>文末会列出一些对该书的思考，欢迎大家在评论区一起探讨优秀的系统架构设计。</p>
-      
-        <div class="readmore">
-          <a href="/blog/2019/1117:大型网站技术架构/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
+<a id="more"></a>
+
+<h3 id="大型网站架构演化发展历程"><a href="#大型网站架构演化发展历程" class="headerlink" title="大型网站架构演化发展历程"></a>大型网站架构演化发展历程</h3><p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/2019/07/%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8C%96%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B.png" alt></p>
+<h3 id="大型网站架构模式"><a href="#大型网站架构模式" class="headerlink" title="大型网站架构模式"></a>大型网站架构模式</h3><p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/2019/07/%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F.png" alt></p>
+<h3 id="大型网站核心架构要素"><a href="#大型网站核心架构要素" class="headerlink" title="大型网站核心架构要素"></a>大型网站核心架构要素</h3><p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/2019/07/%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84%E8%A6%81%E7%B4%A0.png" alt></p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ol>
+<li><h4 id="大型网站发展历程"><a href="#大型网站发展历程" class="headerlink" title="大型网站发展历程"></a>大型网站发展历程</h4><p>补充后期淘宝系统架构发展历史：分布式系统之后，应用自研的OceanBase数据库，使用云计算、混合云，服务容器化等技术。</p>
+<p>虽然文中没有提及微服务这个名词，事实上思想已经存在。</p>
+</li>
+<li><h4 id="分布式中间件的应用"><a href="#分布式中间件的应用" class="headerlink" title="分布式中间件的应用"></a>分布式中间件的应用</h4><p>在该书出版后的短短6年，各项技术如雨后春笋出现在大众视野，其中很多分布式中间件已经发展到非常成熟的地步，应用十分广泛。</p>
+<p>分布式缓存：现阶段主流应用层缓存为redis，尤其是redis-cluster模式，在memcached的互不通信的基础上，增加了主从功能，从而实现数据分片和备份。</p>
+<p>分布式消息中间件：ActiveMQ没落，RocketMQ和Kafka盛行，RabbitMQ仍有一席之地。</p>
+</li>
+<li><h4 id="前端缓存"><a href="#前端缓存" class="headerlink" title="前端缓存"></a>前端缓存</h4><p>补充一下移动互联网时代的前端缓存，举个典型的优化案例，网易云音乐的评论系统，用户在评论后点击确定立即看到了自己的评论，其实是缓存在手机app上的信息，而真正的信息此时可能刚刚进入消息队列，并没有持久化到数据库中。</p>
+</li>
+<li><h4 id="线程池参数定义"><a href="#线程池参数定义" class="headerlink" title="线程池参数定义"></a>线程池参数定义</h4><p>此处需要更正，现阶段的线程池个数设置遵循以下规则：</p>
+<p>计算密集型任务，N=CPU数量+1</p>
+<p>IO密集型任务，N=CPU数量 * CPU利用率 * （1 + 线程等待时间/线程CPU时间）</p>
+</li>
+</ol>
+
         </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/blog/tags/other/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>other</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/blog/2019/1017:正则表达式进阶用法与真实调优案例/">
-      正则表达式进阶用法与真实调优案例
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
         
           
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="https://melodyplayer.github.io" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>Aaron Hu</p>
-    </a>
-  </div>
 
 
-          
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
         
-          
-            <div class="new-meta-item date">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-18T03:29:02+08:00">
   <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-10-17</p>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>last updated at Nov 18, 2019</p>
   </a>
 </div>
 
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p> 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？</p>
-      
-        <div class="readmore">
-          <a href="/blog/2019/1017:正则表达式进阶用法与真实调优案例/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/blog/tags/general/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>general</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <article class="post reveal ">
+          
   
+  <div class="new-meta-item meta-tags"><a class="tag" href="/blog/tags/other/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>other</p></a></div>
 
 
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
         
-  <h2 class="title">
-    <a href="/blog/2019/1004:mac单机部署mysql多实例/">
-      mac单机部署mysql多实例
-    </a>
-  </h2>
-
-
       
-      <div class='new-meta-box'>
         
           
-        
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-            
-  <div class='new-meta-item author'>
-    <a href="https://melodyplayer.github.io" rel="nofollow">
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://melodyplayer.github.io/blog/2019/1117:大型网站技术架构/&title=大型网站技术架构 | 旋律演奏猿&summary=不逼自己一把，可能连本书都没时间看。。
+终于把李智慧大佬的《大型网站技术架构——核心原理与案例分析》看完了，顺便梳理了全书脉络。本书出版于2013年，正是web系统辉煌的顶峰，虽然缺少移动互联网系统的相关介绍，但是系统架构的主题思想仍然是沿用的，即使是5G时代为可能出现的物联网信息大爆炸而设计的服务器系统。所以放眼现在，该书也是系统架构设计入门不可多得的“武功秘籍”。
+文末会列出一些对该书的思考，欢迎大家在评论区一起探讨优秀的系统架构设计。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
       
-        <i class="fas fa-user" aria-hidden="true"></i>
+    
       
-      <p>Aaron Hu</p>
-    </a>
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://melodyplayer.github.io/blog/2019/1117:大型网站技术架构/&title=大型网站技术架构 | 旋律演奏猿&summary=不逼自己一把，可能连本书都没时间看。。
+终于把李智慧大佬的《大型网站技术架构——核心原理与案例分析》看完了，顺便梳理了全书脉络。本书出版于2013年，正是web系统辉煌的顶峰，虽然缺少移动互联网系统的相关介绍，但是系统架构的主题思想仍然是沿用的，即使是5G时代为可能出现的物联网信息大爆炸而设计的服务器系统。所以放眼现在，该书也是系统架构设计入门不可多得的“武功秘籍”。
+文末会列出一些对该书的思考，欢迎大家在评论区一起探讨优秀的系统架构设计。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://melodyplayer.github.io/blog/2019/1117:大型网站技术架构/&title=大型网站技术架构 | 旋律演奏猿&summary=不逼自己一把，可能连本书都没时间看。。
+终于把李智慧大佬的《大型网站技术架构——核心原理与案例分析》看完了，顺便梳理了全书脉络。本书出版于2013年，正是web系统辉煌的顶峰，虽然缺少移动互联网系统的相关介绍，但是系统架构的主题思想仍然是沿用的，即使是5G时代为可能出现的物联网信息大爆炸而设计的服务器系统。所以放眼现在，该书也是系统架构设计入门不可多得的“武功秘籍”。
+文末会列出一些对该书的思考，欢迎大家在评论区一起探讨优秀的系统架构设计。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
   </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-10-04</p>
-  </a>
 </div>
 
-          
-        
-          
-            
 
-          
-        
-          
-            
 
-          
         
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
       
     </div>
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p> 单机部署mysql多实例，需要用到 mysql 自带的 mysqld_multi 命令，在目录 support_files 下有 mysqld_multi.server 命令封装。</p>
-      
-        <div class="readmore">
-          <a href="/blog/2019/1004:mac单机部署mysql多实例/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
         
-          <a href="/blog/tags/mysql/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>mysql</a>
         
-      </div>
-    
-  </section>
-</article>
-
-          </div>
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/blog/2019/1017:正则表达式进阶用法与真实调优案例/" rel="prev" title="正则表达式进阶用法与真实调优案例">
+                                    
+                                        正则表达式进阶用法与真实调优案例
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/blog/tags/general/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>general</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
         
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
+      </section>
+    </article>
   
 
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/blog/2019/0810:线程池invokeAll方法详解/">
-      线程池invokeAll方法详解
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="https://melodyplayer.github.io" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>Aaron Hu</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-08-10</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>线上真实案例，多次调用线程池 ThreadPoolExecutor 的 invokeAll() 方法进行数据统计时任务被拒绝，故事从此开始。</p>
-<p>本文重在讲述问题的产生、抽象、寻找解决方法的过程，并结合源码对原因进行抽丝剥茧般的分析。bug 千千万万，唯有合理的逻辑推理思维才能让这些 bug 显露原形。</p>
-      
-        <div class="readmore">
-          <a href="/blog/2019/0810:线程池invokeAll方法详解/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/blog/tags/java/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>java</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
   
+    <!-- 显示推荐文章和评论 -->
 
 
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Comments</h4>
       
-        
-  <h2 class="title">
-    <a href="/blog/2019/0719:搭建博客要点/">
-      搭建博客要点
-    </a>
-  </h2>
-
-
       
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="https://melodyplayer.github.io" rel="nofollow">
       
-        <i class="fas fa-user" aria-hidden="true"></i>
+        <section id="comments">
+          <div id="gitalk-container"></div>
+        </section>
       
-      <p>Aaron Hu</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-07-19</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
       
-        <hr>
-      
-    </div>
-  </section>
+    </section>
+  </article>
 
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>跟<a href="http://ganlu.ren" target="_blank" rel="noopener">同事</a>一次普通的聊天，谈论到个人博客后，他帮我创建了 github 的博客雏形，从此一发不可收拾。。</p>
-<p>一周时间，每天整到半夜2点多，终于搭建完毕。给大家分享下搭建博客核心要点。</p>
-      
-        <div class="readmore">
-          <a href="/blog/2019/0719:搭建博客要点/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/blog/tags/other/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>other</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/blog/2019/0716:旋律演奏猿/">
-      旋律演奏猿
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="https://melodyplayer.github.io" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>Aaron Hu</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-07-16</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>开始自己的第一个博客，主要记录和分享在工作和学习中用到的一些技术，也会写一些兴趣爱好的文章，分享一些好听的音乐、精彩的电影等等。集工作学习与休闲一体，秉承简单、开放、匠心的精神，演奏程序猿的生活旋律。</p>
-      
-        <div class="readmore">
-          <a href="/blog/2019/0716:旋律演奏猿/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/blog/tags/description/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>description</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
 
   
 
 
-	
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '大型网站技术架构',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class='l_side'>
   
@@ -906,69 +492,14 @@
         
           
           
-            <section class='widget author'>
-  <div class='content pure'>
-    
-      <div class='avatar'>
-        <img class='avatar' src='https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/avatar/avatar.png'/>
-      </div>
-    
-    
-    
-      <div class="social-wrapper">
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
           
-        
-          
-            <a href="mailto:melodyplayer@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://github.com/melodyplayer"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=63035382"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-          
-        
-      
         
           
           
             
-
-          
-        
-      
-        
-          
-          
-            <section class='widget grid'>
+              <section class='widget grid'>
   
 <header class='pure'>
   <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
@@ -1050,91 +581,75 @@
   </div>
 </section>
 
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
           
         
       
         
           
           
-            
-
-          
-        
-      
         
           
           
             
-  <section class='widget tagcloud'>
+              
+  <section class='widget toc-wrapper'>
     
 <header class='pure'>
-  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
   
-    <a class="rightBtn"
-    
-      rel="nofollow"
-    
-    
-    href="/blog/tags/"
-    title="blog/tags/">
-    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
   
 </header>
 
     <div class='content pure'>
-      <a href="/blog/tags/description/" style="font-size: 14px; color: #999">description</a> <a href="/blog/tags/general/" style="font-size: 14px; color: #999">general</a> <a href="/blog/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/blog/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/blog/tags/other/" style="font-size: 24px; color: #555">other</a>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#大型网站架构演化发展历程"><span class="toc-text">大型网站架构演化发展历程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大型网站架构模式"><span class="toc-text">大型网站架构模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大型网站核心架构要素"><span class="toc-text">大型网站核心架构要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思考"><span class="toc-text">思考</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#大型网站发展历程"><span class="toc-text">大型网站发展历程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分布式中间件的应用"><span class="toc-text">分布式中间件的应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端缓存"><span class="toc-text">前端缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#线程池参数定义"><span class="toc-text">线程池参数定义</span></a></li></ol></li></ol>
     </div>
   </section>
 
 
-          
-        
-      
-        
-          
-          
             
-
-
-  <section class='widget music'>
-    
-<header class='pure'>
-  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
-  
-    <a class="rightBtn"
-    
-      rel="external nofollow noopener noreferrer"
-    
-    
-      target="_blank"
-    
-    href="https://music.163.com/#/user/home?id=63035382"
-    title="https://music.163.com/#/user/home?id=63035382">
-    <i class="far fa-heart fa-fw"></i></a>
-  
-</header>
-
-    <div class='content pure'>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
       
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
-  <div class="aplayer"
-    data-theme="#1BCDFC"
-    
-    
-    data-mode="circulation"
-    data-server="netease"
-    data-type="playlist"
-    data-id="2615636388"
-    data-volume="0.7">
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
-
-
-    </div>
-  </section>
-
-
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
           
         
       
@@ -1199,14 +714,6 @@
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
-
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
 
 
       <script>setLoadingBarProgress(60);</script>
@@ -1293,6 +800,24 @@
 
 
 
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "f7b04d5efbb48ed07b87",
+      clientSecret: "60124337a5cae7e65a7836ed536ee5e9f40322f1",
+      repo: "melodyplayer.github.io",
+      owner: "melodyplayer",
+      admin: "melodyplayer",
+      
+        id: md5(location.pathname),  // Ensure uniqueness and length less than 50
+      
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+  </script>
 
 
 
