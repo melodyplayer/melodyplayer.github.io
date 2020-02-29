@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>《设计模式之禅》——行为型（下） | 旋律演奏猿</title>
+  
+  <meta name="keywords" content="博客">
+  
+  
+  <meta name="description" content="演奏程序猿的生活旋律">
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/favicon/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          旋律演奏猿
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogcategories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogtags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogarchives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="http://ganlu.ren/"
+                
+                  rel="nofollow"
+                
+                
+                id="http:ganlu.ren">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/blog/2019/1222:《设计模式之禅》——行为型（下）/">
+        《设计模式之禅》——行为型（下）
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://melodyplayer.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Aaron Hu</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-12-22</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>11种行为型模式（下）：观察者、备忘录、访问者、状态、解释器</p>
+<a id="more"></a>
+
+<h2 id="观察者模式-Observer"><a href="#观察者模式-Observer" class="headerlink" title="观察者模式 Observer"></a>观察者模式 Observer</h2><p>也叫发布订阅模式 Publish/Subscribe。定义对象间一对多依赖关系，依赖对象可以得到通知并自动更新。包含一下几个角色：</p>
+<ol>
+<li>Subject 被观察者：一般是抽象类或实现类，能动态增删观察者，并完成管理观察者并通知观察者的职责。</li>
+<li>Observer 观察者：观察者接收消息后进行处理。</li>
+<li>ConcreteSubject 具体的被观察者：定义个性化业务逻辑，同事定义对哪些事件进行通知。</li>
+<li>ConcreteObserver 具体的观察者：定义个性化处理逻辑。</li>
+</ol>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/design/observer.png" alt></p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li>关联行为场景。注意关联行为可拆分，而不是 “组合” 关系。</li>
+<li>事件多级触发场景。</li>
+<li>跨系统的消息交换场景，如消息队列的处理机制。</li>
+<li>实践中的应用：<ul>
+<li>文件系统：比如在一个目录下新建一个文件，这个动作会同时通知目录管理器增加该目录，并通知磁盘管理器减少 1kb 的空间，也就是说 “文件” 时一个被观察者，“目录管理器” 和 “磁盘管理器” 则是观察者。</li>
+<li>猫鼠游戏：夜里猫叫一声，家里的老鼠逃跑，同时也吵醒了熟睡的主人。</li>
+<li>ATM 取钱：多次输错密码会被吞卡，此时触发的动作有：1. 摄像头连续快拍；2. 通知监控系统发生吞卡； 3. 初始化 ATM 机屏幕，返回最初状态。通常 1、2 通过观察者模式来完成，3 异常完成。</li>
+<li>广播收音机：电台广播，可用多个收音机来收听。</li>
+</ul>
+</li>
+</ol>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>观察者和被观察者之间是抽象耦合。非常容易扩展观察者和被观察者。</li>
+<li>建立一套触发机制。根据单一职责原则，需要把每个单一职责类串联起来的时候。比如打猎打死了一只母鹿，母鹿三个幼崽饿死，尸体被两只秃鹰争抢，分配不均内斗，胜利的秃鹰生存下来并扩大了地盘。这就是一个触发机制，形成了一个触发链。</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>需要考虑开发效率和运行效率问题。一个被观察者、多个观察者，开发和调试会比较复杂。而且 java 中消息的通知默认是顺序执行，一个观察者卡壳，会影响整体的执行效率。此时一般采用异步的方式。</li>
+<li>多级触发时更需要注意效率问题。</li>
+</ol>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><p>广播链问题</p>
+<p>多级触发逻辑复杂，可维护性差。对于观察者来说还可能具有多重身份，既是观察者也是被观察者。经验建议在一个观察者模式中最多出现一个对象既是观察者又是被观察者，也就是消息最多转发一次（传递2次）。</p>
+</li>
+<li><p>异步处理问题</p>
+<p>被观察者发生动作，观察者需要做出回应，如果观察者比较多，处理时间长，需要用异步处理，此时就要考虑线程安全和队列的问题。可参考 Message Queue。</p>
+</li>
+</ol>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><ol>
+<li><p>java 世界中的观察者模式</p>
+<p>Java 中提供可扩展的父类 java.util.Observable，作为被观察者的父类。接口 java.util.Observer，作为观察者的父类。而子类只需实现自己的逻辑方法。</p>
+</li>
+<li><p>项目中真实的观察者模式，改造后包含以下3个方面：</p>
+<ul>
+<li><p>观察者和被观察者之间的消息沟通</p>
+<p>被观察者状态改变会触发观察者的一个行为，同时会传递一个消息给观察者。实际中的做法是：观察者中的 update 方法接受两个参数，一个是被观察者，一个是DTO数据传输对象，这个是纯洁的 javabean，由被观察者生成，由观察者消费。</p>
+<p>远程传输一般以 xml、json 等格式传递。</p>
+</li>
+<li><p>观察者响应方式</p>
+<p>一个观察者多个被观察者的情况下，需要考虑性能问题。如果观察者来不及响应，被观察者的执行时间是不是也会被拉长？问题就在于观察者如何快速响应，有如下两个办法。</p>
+<p>办法一：采用多线程技术，不论被观察者启动线程还是观察者启动线程，都可以明显地提高系统性能。这是异步架构。</p>
+<p>办法二：采用缓存技术，保证足够的资源快速响应。代价是开发难度大，而且压测要足够充分。这是同步架构。</p>
+</li>
+<li><p>被观察者尽量自己做主</p>
+<p>被观察者的状态改变不一定非要通知观察者。设计时要灵活考虑，避免加重观察者的逻辑处理。一般会对被观察者的业务逻辑 doSomething 方法重载，如增加一个 doSomething(boolean isNotifyObs) 方法，决定是否通知观察者，而不是在消息到达观察者时才判断是否要消费。</p>
+</li>
+</ul>
+</li>
+<li><p>订阅发布模型</p>
+<p>EJB3 中有3个类型的Bean：Session Bean、EntityBean 和 MessageDriven Bean （消息驱动 Bean），消息的发布者（Provider）发布一个消息 MDB，通过 EJB 容器（一般是 Message Queue 消息队列）通知订阅者做出回应。</p>
+</li>
+</ol>
+<h3 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h3><p>以电脑为例，包含显示器、风扇、系统、键盘等组件。电源接通时，通知各个组件进行工作，各个组件也会监听键盘、鼠标进行响应。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 观察者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ScreenImpl</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"屏幕开始显示！"</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"屏幕关闭！"</span>); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Observable o, Object arg)</span> </span>&#123;</span><br><span class="line">        String command = String.valueOf(arg);</span><br><span class="line">        <span class="keyword">if</span> (command.equalsIgnoreCase(<span class="string">"start"</span>)) &#123;</span><br><span class="line">            show();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (command.equalsIgnoreCase(<span class="string">"shutdown"</span>)) &#123;</span><br><span class="line">            close();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"屏幕保持不变！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SystemImpl</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"系统开始工作！"</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutdown</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"系统关闭！"</span>); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Observable o, Object arg)</span> </span>&#123;</span><br><span class="line">        String command = String.valueOf(arg);</span><br><span class="line">        <span class="keyword">if</span> (command.equalsIgnoreCase(<span class="string">"start"</span>)) &#123;</span><br><span class="line">            work();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (command.equalsIgnoreCase(<span class="string">"shutdown"</span>)) &#123;</span><br><span class="line">            shutdown();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"系统不认识这个命令！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 被观察者</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Keyboard</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">press</span><span class="params">(String command)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KeyboardImpl</span> <span class="keyword">extends</span> <span class="title">Observable</span> <span class="keyword">implements</span> <span class="title">Keyboard</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">KeyboardImpl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.addObserver(<span class="keyword">new</span> ScreenImpl());</span><br><span class="line">        <span class="keyword">super</span>.addObserver(<span class="keyword">new</span> SystemImpl());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">press</span><span class="params">(String command)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"按下一个命令:"</span> + command);</span><br><span class="line">        <span class="keyword">super</span>.setChanged();</span><br><span class="line">        <span class="keyword">super</span>.notifyObservers(command);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 高层模块</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Keyboard keyboard = <span class="keyword">new</span> KeyboardImpl();</span><br><span class="line">        keyboard.press(<span class="string">"start"</span>);</span><br><span class="line">        keyboard.press(<span class="string">"xxxxx"</span>);</span><br><span class="line">        keyboard.press(<span class="string">"shutdown"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="备忘录模式-Memento"><a href="#备忘录模式-Memento" class="headerlink" title="备忘录模式 Memento"></a>备忘录模式 Memento</h2><p>提供一种程序数据的备份方法。包含以下角色：</p>
+<ol>
+<li>Originator 发起人：记录当前时刻的内部状态，负责定义哪些属于备份范围的状态，负责创建和恢复备忘录数据。</li>
+<li>Memento 备忘录：存储 Originator 对象的内部状态，在需要的时候提供发起人需要的内部状态。</li>
+<li>Caretaker 备忘录管理员：管理、保存、提供备忘录。</li>
+</ol>
+<h3 id="类图-1"><a href="#类图-1" class="headerlink" title="类图"></a>类图</h3><p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/design/memento.png" alt></p>
+<h3 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li>需要保存和恢复数据的相关状态场景。</li>
+<li>提供一个可回滚 rollback 的操作，比如 word 中的 CTRL+Z 组合键，浏览器中的后退按钮，文件管理器上的 backspace 键等。</li>
+<li>需要监控的副本场景。例如要监控一个对象的属性，但监控不应该作为系统的主业务来调用，它只是边缘应用，即使出现监控不准、错误报警也影响不大，因此一般的做法是备份一个主线程中的对象，然后由分析程序来分析。</li>
+<li>数据库连接如 JDBC 驱动的事务管理就是用的备忘录模式。</li>
+</ol>
+<h3 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><p>备忘录的生命周期</p>
+<p>备忘录创建出来就要在 “最近” 的代码中使用，要主动管理它的生命周期，建立就要使用，不需要就要立刻删除其引用，等待 gc 回收。</p>
+</li>
+<li><p>备忘录的性能</p>
+<p>不要在频繁建立备份的场景中使用备忘录模式（比如一个 for 循环中），原因有二：1. 控制不了备忘录建立的对象数量；2. 打对象的建立比较消耗资源，需考虑系统性能。</p>
+</li>
+</ol>
+<h3 id="扩展-1"><a href="#扩展-1" class="headerlink" title="扩展"></a>扩展</h3><ol>
+<li><p>clone 方式的备忘录（代码演示）</p>
+<p>适用于较简单的场景，要避免与其他的对象产生严重的耦合关系。</p>
+<p>该方式把状态保留在了发起人内部，更方便。原因在于 java 的诞生比提出设计模式略晚。</p>
+</li>
+<li><p>多状态的备忘录模式（代码演示）</p>
+<p>对象不可能只有一个状态，一个 javabean 存在多个属性。对象全状态备份方案有多种处理方式，比如使用 clone、数据技术 DTO 回写临时表、使用 BeanUtils 类等。</p>
+</li>
+<li><p>多备份的备忘录（代码演示）</p>
+<p>实现多备份的检查点 Check Point 设计思路：修改备忘录的容器为 map 类型。注意内存一出问题，设计时要严格限定备忘录的创建，增加 map 的上限。</p>
+</li>
+<li><p>设置备份无法修改，保证备份数据纯洁（代码演示）</p>
+<p>使用内部类，设置为 private 。采用双接口设计：一个是业务的正常接口（宽接口），必要的业务逻辑；另一个是空接口（窄接口），什么方法都没有，目的是提供给子系统外的模块访问，比如容器对象，没有提供任何操纵数据的方法，相对比较安全。</p>
+</li>
+</ol>
+<h3 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h3><ol>
+<li><p>标准备忘录</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 发起人</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Originator</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 内部状态</span></span><br><span class="line">    <span class="keyword">private</span> String state = <span class="string">"初始状态"</span>;</span><br><span class="line">    <span class="comment">// 创建备忘录</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Memento <span class="title">createMemento</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="keyword">new</span> Memento(<span class="keyword">this</span>.state); &#125;</span><br><span class="line">    <span class="comment">// 恢复备忘录</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">restoreMemento</span><span class="params">(Memento memento)</span> </span>&#123; <span class="keyword">this</span>.setState(memento.getState()); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 备忘录</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Memento</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 发起人的内部状态</span></span><br><span class="line">    <span class="keyword">private</span> String state = <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 备忘录管理员</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Caretaker</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Memento memento;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Originator originator = <span class="keyword">new</span> Originator();</span><br><span class="line">        Caretaker caretaker = <span class="keyword">new</span> Caretaker();</span><br><span class="line">        <span class="comment">// 创建备忘录</span></span><br><span class="line">        caretaker.setMemento(originator.createMemento());</span><br><span class="line">        originator.setState(<span class="string">"改变了状态"</span>);</span><br><span class="line">        System.out.println(<span class="string">"当前发起人的状态是："</span> + originator.getState());</span><br><span class="line">        <span class="comment">// 恢复备忘录</span></span><br><span class="line">        originator.restoreMemento(caretaker.getMemento());</span><br><span class="line">        System.out.println(<span class="string">"恢复后发起人的状态是："</span> + originator.getState());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>clone 方式备忘录</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Originator2</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Originator2 backup;</span><br><span class="line">    <span class="keyword">private</span> String state = <span class="string">"初始状态"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createMemento</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        backup = <span class="keyword">this</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">restoreMemento</span><span class="params">(Originator2 originator2)</span> <span class="keyword">throws</span> NoSuchFieldException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (backup != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(backup.getState());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"备份为null"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Originator2 <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (Originator2) <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        Originator2 originator2 = <span class="keyword">new</span> Originator2();</span><br><span class="line">        originator2.createMemento();</span><br><span class="line">        originator2.setState(<span class="string">"修改了状态"</span>);</span><br><span class="line">        System.out.println(<span class="string">"修改后的状态： "</span> + originator2.getState());</span><br><span class="line">        originator2.setState(originator2.getBackup().getState());</span><br><span class="line">        System.out.println(<span class="string">"恢复后的状态： "</span> + originator2.getState());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多状态备忘录</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Originator3</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String state1 = <span class="string">"初始状态111"</span>;</span><br><span class="line">    <span class="keyword">private</span> String state2 = <span class="string">"初始状态222"</span>;</span><br><span class="line">    <span class="keyword">private</span> String state3 = <span class="string">"初始状态333"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Memento3 <span class="title">createMemento</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Memento3(BeanUtils.backupProp(<span class="keyword">this</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">restoreMemento</span><span class="params">(Memento3 memento3)</span> </span>&#123;</span><br><span class="line">        BeanUtils.restoreProp(<span class="keyword">this</span>, memento3.getStateMap());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"Originator3&#123;"</span>);</span><br><span class="line">        sb.append(<span class="string">"state1='"</span>).append(state1).append(<span class="string">'\''</span>);</span><br><span class="line">        sb.append(<span class="string">", state2='"</span>).append(state2).append(<span class="string">'\''</span>);</span><br><span class="line">        sb.append(<span class="string">", state3='"</span>).append(state3).append(<span class="string">'\''</span>);</span><br><span class="line">        sb.append(<span class="string">'&#125;'</span>);</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Memento3</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, Object&gt; stateMap;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 工具类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BeanUtils</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">backupProp</span><span class="params">(Object source)</span> </span>&#123;</span><br><span class="line">        Map&lt;String, Object&gt; stateMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 获得 bean 信息</span></span><br><span class="line">            BeanInfo beanInfo = Introspector.getBeanInfo(source.getClass());</span><br><span class="line">            <span class="comment">// 属性信息</span></span><br><span class="line">            PropertyDescriptor[] descriptors = beanInfo.getPropertyDescriptors();</span><br><span class="line">            <span class="comment">// 遍历所有属性</span></span><br><span class="line">            <span class="keyword">for</span> (PropertyDescriptor descriptor : descriptors) &#123;</span><br><span class="line">                <span class="comment">// 属性名</span></span><br><span class="line">                String fieldName = descriptor.getName();</span><br><span class="line">                <span class="comment">// getter方法</span></span><br><span class="line">                Method getter = descriptor.getReadMethod();</span><br><span class="line">                <span class="comment">// 属性值</span></span><br><span class="line">                Object fieldValue = getter.invoke(source);</span><br><span class="line">                <span class="keyword">if</span> (!<span class="string">"class"</span>.equalsIgnoreCase(fieldName)) &#123;</span><br><span class="line">                    stateMap.put(fieldName, fieldValue);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stateMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">restoreProp</span><span class="params">(Object target, Map&lt;String, Object&gt; propMap)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            BeanInfo beanInfo = Introspector.getBeanInfo(target.getClass());</span><br><span class="line">            PropertyDescriptor[] descriptors = beanInfo.getPropertyDescriptors();</span><br><span class="line">            <span class="keyword">for</span> (PropertyDescriptor descriptor : descriptors) &#123;</span><br><span class="line">                String fieldName = descriptor.getName();</span><br><span class="line">                <span class="keyword">if</span> (propMap.containsKey(fieldName)) &#123;</span><br><span class="line">                    Method setter = descriptor.getWriteMethod();</span><br><span class="line">                    setter.invoke(target, propMap.get(fieldName));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Originator3 originator3 = <span class="keyword">new</span> Originator3();</span><br><span class="line">        Memento3 memento3 = originator3.createMemento();</span><br><span class="line">        originator3.setState1(<span class="string">"变了1"</span>);</span><br><span class="line">        originator3.setState2(<span class="string">"变了2"</span>);</span><br><span class="line">        originator3.setState3(<span class="string">"变了3"</span>);</span><br><span class="line">        System.out.println(originator3.toString());</span><br><span class="line">        originator3.restoreMemento(memento3);</span><br><span class="line">        System.out.println(originator3.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多备份备忘录</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Originator4</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String state = <span class="string">"初始状态"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Memento4 <span class="title">createMemento</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Memento4(<span class="keyword">this</span>.state);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">restoreMemento</span><span class="params">(Memento4 memento4)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = memento4.getState();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Memento4</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String state;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Caretaker4</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 容纳多版本备忘录的容器</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, Memento4&gt; memMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Memento4 <span class="title">getMemento</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.memMap.get(key);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMemento</span><span class="params">(String key, Memento4 memento4)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.memMap.put(key, memento4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Originator4 originator4 = <span class="keyword">new</span> Originator4();</span><br><span class="line">        Caretaker4 caretaker4 = <span class="keyword">new</span> Caretaker4();</span><br><span class="line">        Memento4 memento4 = originator4.createMemento();</span><br><span class="line">        memento4.setState(<span class="string">"100状态"</span>);</span><br><span class="line">        caretaker4.setMemento(<span class="string">"100"</span>, memento4);</span><br><span class="line">        caretaker4.setMemento(<span class="string">"200"</span>, originator4.createMemento());</span><br><span class="line">        originator4.setState(<span class="string">"发起人拥有了新状态"</span>);</span><br><span class="line">        System.out.println(<span class="string">"此时发起人的状态："</span> + originator4.getState());</span><br><span class="line">        originator4.restoreMemento(caretaker4.getMemento(<span class="string">"100"</span>));</span><br><span class="line">        System.out.println(<span class="string">"恢复100后的状态:"</span> + originator4.getState());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>双接口设计备忘录，防修改</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Originator5</span> </span>&#123;</span><br><span class="line"> <span class="keyword">private</span> String state = <span class="string">"初始状态"</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> IMemento <span class="title">createMemento</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Memento5(<span class="keyword">this</span>.state);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">restoreMemento</span><span class="params">(IMemento memento)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(memento.getState());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Data</span></span><br><span class="line">    <span class="meta">@AllArgsConstructor</span></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Memento5</span> <span class="keyword">implements</span> <span class="title">IMemento</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 窄接口，提供外部访问</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMemento</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">getState</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Caretaker5</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> IMemento iMemento;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client5</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Originator5 originator5 = <span class="keyword">new</span> Originator5();</span><br><span class="line">        IMemento memento = originator5.createMemento();</span><br><span class="line">        Caretaker5 caretaker5 = <span class="keyword">new</span> Caretaker5();</span><br><span class="line">        caretaker5.setIMemento(memento);</span><br><span class="line"></span><br><span class="line">        originator5.setState(<span class="string">"修改了状态"</span>);</span><br><span class="line">        System.out.println(<span class="string">"当前 originator 的状态："</span> + originator5.getState());</span><br><span class="line"></span><br><span class="line">        originator5.restoreMemento(caretaker5.getIMemento());</span><br><span class="line">        System.out.println(<span class="string">"执行恢复后的状态："</span> + originator5.getState());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="访问者模式-Visitor"><a href="#访问者模式-Visitor" class="headerlink" title="访问者模式 Visitor"></a>访问者模式 Visitor</h2><p>将多种对象的操作交给访问者处理，避免对象和处理各自变化产生的耦合，在单一职责原则基础上实现良好的扩展性。主要包含以下角色：</p>
+<ol>
+<li>Visitor 抽象访问者：抽象类或者接口，声明访问者可以访问哪些元素，具体到程序中就是 visit 方法的参数定义哪些对象可以被访问。</li>
+<li>ConcreteVisitor 具体访问者：访问者访问一个类后具体要做的事。</li>
+<li>Element 抽象元素：接口或者抽象类，声明接受哪一类访问者访问，程序中通过 accept 方法参数定义。</li>
+<li>ConcreteElement 具体元素：实现 accept 方法，通常是 visitor.visit(this)，已称为固定写法。</li>
+<li>ObjectStructure 结构对象：元素产生者，一般容纳在多个不同类、不同接口的容器，如 List、Set、Map 等，在项目中，一般很少抽象出这个角色。</li>
+</ol>
+<h3 id="类图-2"><a href="#类图-2" class="headerlink" title="类图"></a>类图</h3><p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/design/visitor.png" alt></p>
+<h3 id="使用场景-2"><a href="#使用场景-2" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li><p>一个对象结果包含很多类对象，它们有不同的接口，需要对这些对象实施一些依赖于其具体类的操作，迭代器模式已经不能胜任的情况。</p>
+</li>
+<li><p>需要对一个对象结果中的对象进行多种不相关操作，同时想避免这些操作 “污染” 这些对象的类的情况。</p>
+</li>
+<li><p>总结来说就是，业务规则要求遍历多个不同的对象。</p>
+<p>迭代器模式只能访问同类或同接口的数据（当然用 instance of 可以访问所有数据），而访问者模式时对迭代器模式的扩充可以遍历不同的对象，针对不同的访问对象执行不同的操作。</p>
+</li>
+<li><p>访问者模式还可以用来充当拦截器（Interceptor）角色。</p>
+</li>
+<li><p>特别适用于大规模重构项目，集中规整。在一个阶段需求已经非常清晰，原系统功能点也已经明确，通过访问者模式可以很容易把一些功能进行梳理，达到最终目的——功能集中化，如一个统一的报表运算、UI展现等。还可以与其他模式混编建立一套自己的过滤器或者拦截器。（参考混编模式）</p>
+</li>
+</ol>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ol>
+<li><p>符合单一职责原则</p>
+<p>具体元素角色 Employee（抽象类的两个子类）负责数据的加载，而 Visitor 类负责报表展现，两个不同的职责明确分离，各自变化。</p>
+</li>
+<li><p>优秀的扩展性</p>
+<p>职责分离，方便继续增加对数据的操作。直接在 Visitor 中增加一个方法，传递数据后进行处理即可。</p>
+</li>
+<li><p>灵活性非常高</p>
+<p>比如统计所有员工的工资，员工、部门经理、总经理都有各自的系数，通过遍历循环相加不是个好办法。这时可以采用访问者模式，将数据交给访问者计算。</p>
+</li>
+</ol>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li><p>具体元素对访问者公布细节，违背迪米特法则</p>
+<p>访问者要访问一个类就必然要这个类公布需要的方法和数据，这就是说访问者关注了其他类的内部细节。</p>
+</li>
+<li><p>具体元素变更比较困难</p>
+<p>具体元素角色的增加、删除、修改都比较难。比如要想增删一个成员变量，Visitor 就得做修改。</p>
+</li>
+<li><p>违背依赖倒置原则</p>
+<p>访问者依赖的是具体元素，而不是抽象元素。在面向对象的编程中，抛弃对接口的依赖，直接依赖实现类，扩展会比较难。</p>
+</li>
+</ol>
+<h3 id="扩展-2"><a href="#扩展-2" class="headerlink" title="扩展"></a>扩展</h3><ol>
+<li><p><strong>统计功能（代码演示）</strong></p>
+<p>金融类企业常用汇总和报表功能，比如统计工资总额，不建议采用数据库存储过程，采用访问者模式，在 IVisitor 中增加 getTotalSalary 方法，实现类实现即可。</p>
+</li>
+<li><p><strong>多个访问者（代码演示）</strong></p>
+<p>比如展示表、汇总表，同一堆数据两种处理方式，从程序上看，一个类就有2个不同的访问者。</p>
+</li>
+<li><p><strong>双分派（代码演示）</strong></p>
+<p>一个演员可以扮演很多角色，系统要适应这种变化，也就是根据演员、角色两个对象类型，完成不同操作任务，这时就需要使用访问者模式。</p>
+<p>通过调用者实际类型+方法参数中的类型才能确定方法版本时，这种分派称作多分派。只依据调用者和方法参数，叫做单分派。</p>
+<p>双分派 double dispatch 意味着得到执行的操作由请求种类和两个接收者类型决定，属于多分派的一个特例。java 是一个支持双分派的单分派语言。</p>
+<p><strong>延伸阅读：</strong><a href="https://blog.csdn.net/fan2012huan/article/details/51004615" target="_blank" rel="noopener">java方法调用之单分派与多分派</a></p>
+<p>java 静态、动态绑定依据重载 overload 和覆写 overide 实现。重载在编译器决定调用哪个方法，它根据表面类型决定方法调用，这是静态绑定；而执行该方法是由实际类型决定的，这是动态绑定。</p>
+<p>定义语言分派时一般指语言动态运行时的分派方式，java 在动态运行时就是根据调用者最终类型来区分要方法调用的方法的，所以说 java 是单分派语言。然而 java 在编译时是根据调用者本身类型和方法参数共同确定调用方法的，所以是静态多分派。</p>
+</li>
+</ol>
+<h3 id="代码演示-2"><a href="#代码演示-2" class="headerlink" title="代码演示"></a>代码演示</h3><ol>
+<li><p><strong>统计功能</strong></p>
+<p>以制作公司员工以及管理报表、计算工资总额为例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IVisitor1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(CommonEmployee commonEmployee)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(Manager manager)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getTotalSalary</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Visitor1</span> <span class="keyword">implements</span> <span class="title">IVisitor1</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> commonEmplayTotalSalary = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> managerTotalSalary = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> COMMONEMPLOYEE_COEFICIENT = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> MANAGER_COEFICIENT = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTotalSalary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> commonEmplayTotalSalary + managerTotalSalary;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getCommonEmployeeTotalSalary</span><span class="params">(<span class="keyword">int</span> salary)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> commonEmplayTotalSalary + salary * COMMONEMPLOYEE_COEFICIENT;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getManagerTotalSalary</span><span class="params">(<span class="keyword">int</span> salary)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> managerTotalSalary + salary * MANAGER_COEFICIENT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(CommonEmployee commonEmployee)</span> </span>&#123;</span><br><span class="line">        System.out.println(getCommonEmployeeInfo(commonEmployee));</span><br><span class="line">        <span class="keyword">this</span>.commonEmplayTotalSalary = getCommonEmployeeTotalSalary(commonEmployee.getSalary());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Manager manager)</span> </span>&#123;</span><br><span class="line">        System.out.println(getManagerInfo(manager));</span><br><span class="line">        <span class="keyword">this</span>.managerTotalSalary = getManagerTotalSalary(manager.getSalary());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getCommonEmployeeInfo</span><span class="params">(CommonEmployee commonEmployee)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getBasicInfo(commonEmployee) + <span class="string">"job="</span> + commonEmployee.getJob();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getManagerInfo</span><span class="params">(Manager manager)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getBasicInfo(manager) + <span class="string">"performance="</span> + manager.getPerformance();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getBasicInfo</span><span class="params">(Employee employee)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StringJoiner(<span class="string">"\t"</span>, <span class="string">""</span>, <span class="string">"\t\t"</span>)</span><br><span class="line">                .add(<span class="string">"name="</span> + employee.getName())</span><br><span class="line">                .add(<span class="string">"salary="</span> + employee.getSalary())</span><br><span class="line">                .toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> salary;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(IVisitor1 visitor)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommonEmployee</span> <span class="keyword">extends</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String job;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(IVisitor1 visitor)</span> </span>&#123; visitor.visit(<span class="keyword">this</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Manager</span> <span class="keyword">extends</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String performance;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(IVisitor1 visitor)</span> </span>&#123; visitor.visit(<span class="keyword">this</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Visitor1 visitor = <span class="keyword">new</span> Visitor1();</span><br><span class="line">        <span class="keyword">for</span> (Employee employee : mockEmployee()) &#123;</span><br><span class="line">            employee.accept(visitor);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"\n工资总额："</span> + visitor.getTotalSalary());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> List&lt;Employee&gt; <span class="title">mockEmployee</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;Employee&gt; employeeList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        CommonEmployee zhangsan = <span class="keyword">new</span> CommonEmployee();</span><br><span class="line">        zhangsan.setName(<span class="string">"张三"</span>);</span><br><span class="line">        zhangsan.setSalary(<span class="number">1800</span>);</span><br><span class="line">        zhangsan.setJob(<span class="string">"程序猿"</span>);</span><br><span class="line"></span><br><span class="line">        CommonEmployee lisi = <span class="keyword">new</span> CommonEmployee();</span><br><span class="line">        lisi.setName(<span class="string">"李四"</span>);</span><br><span class="line">        lisi.setSalary(<span class="number">2000</span>);</span><br><span class="line">        lisi.setJob(<span class="string">"产品汪"</span>);</span><br><span class="line"></span><br><span class="line">        Manager manager = <span class="keyword">new</span> Manager();</span><br><span class="line">        manager.setName(<span class="string">"主管"</span>);</span><br><span class="line">        manager.setSalary(<span class="number">5000</span>);</span><br><span class="line">        manager.setPerformance(<span class="string">"马马虎虎"</span>);</span><br><span class="line"></span><br><span class="line">        employeeList.add(zhangsan);</span><br><span class="line">        employeeList.add(lisi);</span><br><span class="line">        employeeList.add(manager);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> employeeList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>多个访问者</strong></p>
+<p>上述例子中，把展示表、汇总表分拆为两个 visitor 接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IVisitor2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(CommonEmployee2 commonEmployee2)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(Manager2 manager2)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 元素类，决定哪些访问者可以访问</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> salary;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(IVisitor2 iVisitor2)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommonEmployee2</span> <span class="keyword">extends</span> <span class="title">Employee2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String job;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(IVisitor2 iVisitor2)</span> </span>&#123;</span><br><span class="line">        iVisitor2.visit(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Manager2</span> <span class="keyword">extends</span> <span class="title">Employee2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String performance;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(IVisitor2 iVisitor2)</span> </span>&#123;</span><br><span class="line">        iVisitor2.visit(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 展示表访问者</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IShowVisitor2</span> <span class="keyword">extends</span> <span class="title">IVisitor2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">report</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 工资统计表访问者</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IStatisticsVisitor2</span> <span class="keyword">extends</span> <span class="title">IVisitor2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">statisticsSalary</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShowVisitor2</span> <span class="keyword">implements</span> <span class="title">IShowVisitor2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, String&gt; infoMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(CommonEmployee2 commonEmployee2)</span> </span>&#123;</span><br><span class="line">        infoMap.put(commonEmployee2.getName(), getCommonEmployeeInfo(commonEmployee2));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Manager2 manager2)</span> </span>&#123;</span><br><span class="line">        infoMap.put(manager2.getName(), getManagerInfo(manager2));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">report</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, String&gt; entry : infoMap.entrySet()) &#123;</span><br><span class="line">            System.out.println(entry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getCommonEmployeeInfo</span><span class="params">(CommonEmployee2 commonEmployee2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getBasicInfo(commonEmployee2) + <span class="string">"job="</span> + commonEmployee2.getJob();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getManagerInfo</span><span class="params">(Manager2 manager2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getBasicInfo(manager2) + <span class="string">"performance="</span> + manager2.getPerformance();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getBasicInfo</span><span class="params">(Employee2 employee2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StringJoiner(<span class="string">"\t"</span>, <span class="string">""</span>, <span class="string">"\t\t"</span>)</span><br><span class="line">                .add(<span class="string">"name="</span> + employee2.getName())</span><br><span class="line">                .add(<span class="string">"salary="</span> + employee2.getSalary())</span><br><span class="line">                .toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StatisticsVisitor2</span> <span class="keyword">implements</span> <span class="title">IStatisticsVisitor2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> commonEmplayTotalSalary = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> managerTotalSalary = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> COMMONEMPLOYEE_COEFICIENT = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> MANAGER_COEFICIENT = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(CommonEmployee2 commonEmployee2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.commonEmplayTotalSalary += commonEmployee2.getSalary() * COMMONEMPLOYEE_COEFICIENT;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Manager2 manager2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.managerTotalSalary += manager2.getSalary() * MANAGER_COEFICIENT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">statisticsSalary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"工资总额："</span> + (<span class="keyword">this</span>.commonEmplayTotalSalary + <span class="keyword">this</span>.managerTotalSalary));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        IShowVisitor2 showVisitor2 = <span class="keyword">new</span> ShowVisitor2();</span><br><span class="line">        IStatisticsVisitor2 statisticsVisitor2 = <span class="keyword">new</span> StatisticsVisitor2();</span><br><span class="line">        <span class="keyword">for</span> (Employee2 employee : mockEmployee()) &#123;</span><br><span class="line">            employee.accept(showVisitor2);</span><br><span class="line">            employee.accept(statisticsVisitor2);</span><br><span class="line">        &#125;</span><br><span class="line">        showVisitor2.report();</span><br><span class="line">        statisticsVisitor2.statisticsSalary();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> List&lt;Employee2&gt; <span class="title">mockEmployee</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;Employee2&gt; employeeList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        CommonEmployee2 zhangsan = <span class="keyword">new</span> CommonEmployee2();</span><br><span class="line">        zhangsan.setName(<span class="string">"张三"</span>);</span><br><span class="line">        zhangsan.setSalary(<span class="number">1800</span>);</span><br><span class="line">        zhangsan.setJob(<span class="string">"程序猿"</span>);</span><br><span class="line"></span><br><span class="line">        CommonEmployee2 lisi = <span class="keyword">new</span> CommonEmployee2();</span><br><span class="line">        lisi.setName(<span class="string">"李四"</span>);</span><br><span class="line">        lisi.setSalary(<span class="number">2000</span>);</span><br><span class="line">        lisi.setJob(<span class="string">"产品汪"</span>);</span><br><span class="line"></span><br><span class="line">        Manager2 manager = <span class="keyword">new</span> Manager2();</span><br><span class="line">        manager.setName(<span class="string">"主管"</span>);</span><br><span class="line">        manager.setSalary(<span class="number">5000</span>);</span><br><span class="line">        manager.setPerformance(<span class="string">"绩效很高"</span>);</span><br><span class="line"></span><br><span class="line">        employeeList.add(zhangsan);</span><br><span class="line">        employeeList.add(lisi);</span><br><span class="line">        employeeList.add(manager);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> employeeList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>双分派</strong></p>
+<p>以演员演电影为例，一个演员可以演多个角色，系统要根据演员、角色两个类型共同决定完成什么任务。<br>通过访问者模式解决演员、角色变化的问题，由请求种类和两个接收者类型决定怎么执行，实现双分派。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Role</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KungFuRole</span> <span class="keyword">implements</span> <span class="title">Role</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ComedyRole</span> <span class="keyword">implements</span> <span class="title">Role</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractActor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">act</span><span class="params">(Role role)</span> </span>&#123; System.out.println(<span class="string">"演员可以扮演任何角色"</span>); &#125;</span><br><span class="line">    <span class="comment">// 重载</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">act</span><span class="params">(KungFuRole kungFuRole)</span> </span>&#123; System.out.println(<span class="string">"演员可以演功夫角色"</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Actor1</span> <span class="keyword">extends</span> <span class="title">AbstractActor</span> </span>&#123;</span><br><span class="line">  	<span class="comment">// 重写</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">act</span><span class="params">(KungFuRole kungFuRole)</span> </span>&#123; System.out.println(<span class="string">"这个类的演员都会功夫，拍打片非常合适！"</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Actor2</span> <span class="keyword">extends</span> <span class="title">AbstractActor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">act</span><span class="params">(KungFuRole kungFuRole)</span> </span>&#123; System.out.println(<span class="string">"这个类型的演员不太擅长演功夫角色，需要指导"</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client4</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Role role = <span class="keyword">new</span> KungFuRole();</span><br><span class="line">        AbstractActor actor = <span class="keyword">new</span> Actor2();</span><br><span class="line">        <span class="comment">// 执行一下两个方法就会发现，重载在编译期就决定了要调用哪个方法，虽然 actor.act(role) 用的子类构造。</span></span><br><span class="line">        <span class="comment">// 根据 role 的表面类型调用 act(Role role) 方法，这是静态绑定。而 Actor 的执行方法 act 则是由实际类型决定的，这是动态绑定。</span></span><br><span class="line">        actor.act(role);</span><br><span class="line">        actor.act(<span class="keyword">new</span> KungFuRole());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">RoleTwo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(AbstractActorTwo actor)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KungFuRoleTwo</span> <span class="keyword">implements</span> <span class="title">RoleTwo</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(AbstractActorTwo actor)</span> </span>&#123; actor.act(<span class="keyword">this</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ComedyRoleTwo</span> <span class="keyword">implements</span> <span class="title">RoleTwo</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(AbstractActorTwo actor)</span> </span>&#123; actor.act(<span class="keyword">this</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractActorTwo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">act</span><span class="params">(RoleTwo role)</span> </span>&#123; System.out.println(<span class="string">"演员可以扮演任何角色"</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">act</span><span class="params">(KungFuRoleTwo kungFuRole)</span> </span>&#123; System.out.println(<span class="string">"演员可以演功夫角色"</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ActorTwo1</span> <span class="keyword">extends</span> <span class="title">AbstractActorTwo</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">act</span><span class="params">(KungFuRoleTwo kungFuRole)</span> </span>&#123; System.out.println(<span class="string">"这个类的演员都会功夫，拍打片非常合适！"</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ActorTwo2</span> <span class="keyword">extends</span> <span class="title">AbstractActorTwo</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">act</span><span class="params">(KungFuRoleTwo kungFuRole)</span> </span>&#123; System.out.println(<span class="string">"这个类型的演员不太擅长演功夫角色，需要指导"</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClientTwo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        RoleTwo roleTwo = <span class="keyword">new</span> KungFuRoleTwo();</span><br><span class="line">        AbstractActorTwo actorTwo = <span class="keyword">new</span> ActorTwo2();</span><br><span class="line">        roleTwo.accept(actorTwo);</span><br><span class="line">        roleTwo.accept(<span class="keyword">new</span> ActorTwo2());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h2 id="状态模式-State"><a href="#状态模式-State" class="headerlink" title="状态模式 State"></a>状态模式 State</h2><p>核心是封装，状态变更引起行为变更，从外部看起来就像这个对象对应的类发生了改变，包含三个角色：</p>
+<ol>
+<li>State 抽象状态角色：接口或抽象类，负责对象状态定义，并且封装环境角色以实现状态切换。</li>
+<li>ConcreteState 具体状态角色：每一个具体状态必须完成2个职责，本状态的行为管理和趋向状态处理，通俗而言就是本状态下要做的事以及本状态如何过度到其他状态。</li>
+<li>Context 环境角色：定义客户需要的接口，并负责具体状态切换。</li>
+</ol>
+<h3 id="类图-3"><a href="#类图-3" class="headerlink" title="类图"></a>类图</h3><p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/design/state.png" alt></p>
+<h3 id="使用场景-3"><a href="#使用场景-3" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li><p>行为随状态改变而改变的场景</p>
+<p>这是状态模式的根本出发点，例如权限设计，人员的状态不同即使执行相同的行为结果也可能不同。</p>
+</li>
+<li><p>条件、分支判断语句的替代者</p>
+<p>避免使用 switch、if 的地方可以考虑，通过扩展子类实现条件的判断处理。</p>
+</li>
+</ol>
+<h3 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h3><ol>
+<li><p>结构清晰</p>
+<p>避免过多 switch..case… 或 if…else… 语句的使用，避免程序复杂性，提升可维护性。</p>
+</li>
+<li><p>遵循开闭原则和单一职责原则</p>
+<p>每一个状态都是一个子类，想增加或修改状态只需要增加或修改子类即可。</p>
+</li>
+<li><p>封装性非常好</p>
+<p>状态变换放到类内部实现，外部的调用不需要知道类内如何实现状态和行为的变换。</p>
+</li>
+</ol>
+<h3 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li><p>子类可能会膨胀</p>
+<p>可在数据库中建立一个状态表，然后根据状态执行相应的操作。</p>
+</li>
+</ol>
+<h3 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li>行为受状态约束时可使用状态模式，对象的状态最好不要超过5个。</li>
+</ol>
+<h3 id="扩展-3"><a href="#扩展-3" class="headerlink" title="扩展"></a>扩展</h3><ol>
+<li><p>状态模式+建造者模式</p>
+<p>状态自由切换种类太多，可使用建造者模式把已有的几种状态按照一定顺序进行封装。</p>
+</li>
+<li><p>状态机 State Machine</p>
+<p>Context 类的升级版，工作流开发中常用。</p>
+</li>
+</ol>
+<h3 id="代码演示-3"><a href="#代码演示-3" class="headerlink" title="代码演示"></a>代码演示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">State</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Setter</span></span><br><span class="line">    <span class="keyword">protected</span> Context context;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleState1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleState2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteState1</span> <span class="keyword">extends</span> <span class="title">State</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handleState1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"当前状态："</span> + <span class="keyword">super</span>.context.getCurrentState() + <span class="string">"，开始执行状态1的动作"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handleState2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.context.setCurrentState(Context.STATE2);</span><br><span class="line">        <span class="keyword">super</span>.context.handleState2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteState2</span> <span class="keyword">extends</span> <span class="title">State</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handleState1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.context.setCurrentState(Context.STATE1);</span><br><span class="line">        <span class="keyword">super</span>.context.handleState1();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handleState2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"当前状态："</span> + <span class="keyword">super</span>.context.getCurrentState()+ <span class="string">"，开始执行状态2的动作"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> State STATE1 = <span class="keyword">new</span> ConcreteState1();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> State STATE2 = <span class="keyword">new</span> ConcreteState2();</span><br><span class="line">    <span class="meta">@Getter</span></span><br><span class="line">    <span class="keyword">private</span> State currentState;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCurrentState</span><span class="params">(State currentState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.currentState = currentState;</span><br><span class="line">        <span class="keyword">this</span>.currentState.setContext(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleState1</span><span class="params">()</span> </span>&#123; <span class="keyword">this</span>.currentState.handleState1(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleState2</span><span class="params">()</span> </span>&#123; <span class="keyword">this</span>.currentState.handleState2(); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Context context = <span class="keyword">new</span> Context();</span><br><span class="line">        context.setCurrentState(Context.STATE1);</span><br><span class="line">        context.handleState2();</span><br><span class="line">        context.handleState1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解释器模式-Interpreter"><a href="#解释器模式-Interpreter" class="headerlink" title="解释器模式 Interpreter"></a>解释器模式 Interpreter</h2><p>按照规定语法进行解析的模式。这个模式主要理解概念和理念，实际应用较少。以公式 a+b+c-d 为例，先介绍几个基本概念：</p>
+<ol>
+<li>运算元素：也叫做终结符号。指 a、b、c 等符号，需要具体赋值的对象。这些元素除了需要赋值外，不需要做任何处理，所有运算元素都对应一个具体的业务参数，是语法中最小的单元逻辑，不可再拆分。</li>
+<li>运算符号：也叫非终结符号。指 +、- 等符号，需要编写算法进行处理，每个运算符号对咬对应处理单元，否则公式无法运行。</li>
+</ol>
+<p>两类元素的共同点是都要被解析，不同点是所有的运算元素具有相同的功能，可以用一个类表示，而运算符号则需要分别进行解释，例如加法需要加法解析器，减法需要减法解析器。</p>
+<p>解析器模式包含以下4个角色：</p>
+<ol>
+<li>AbstractExpression 抽象解释器：具体的解释任务由各实现类完成，具体解释器分别由 TerminalExpression 和 NonterminalExpression 完成。</li>
+<li>TerminalExpression 终结符表达式：实现与文法中的元素相关联的解释操作，通常一个解释器模式中只有一个终结符表达式，但有多个实例，对应不同的终结符。</li>
+<li>NonterminalExpression 非终结符表达式：文法中的每条规则对应于一个非终结表达式，根据逻辑的复杂程度而增加，原则上每个文法规则都对应一个非终结符表达式。</li>
+<li>Context 环境角色：例如用 HashMap 代替。</li>
+</ol>
+<h3 id="类图-4"><a href="#类图-4" class="headerlink" title="类图"></a>类图</h3><p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/design/interpreter.png" alt></p>
+<h3 id="使用场景-4"><a href="#使用场景-4" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li><p>重复发生的问题</p>
+<p>例如多个应用服务器每天产生大量日志，需要对日志文件进行分析处理，各服务器的日志格式不同但数据要素相同，按照解释器的说法就是终结符表达式都是相同的，但是非终结符表达式则需要制定。</p>
+</li>
+<li><p>一个简单语法需要解释的场景</p>
+<p>对于非终结表达式，文法规则越多，复杂度越高，而且类间还要进行递归调用，需要极大耐心和信心去排查问题。因此解释器一般用来解析比较标准的字符集，例如 SQL 语法分析，不过该部分逐渐被专用工具代替。</p>
+</li>
+<li><p>某些特定的商业环境</p>
+<p>现在模型运算的例子很多，目前很多商业机构已经能够提供出大量的数据进行分析。</p>
+</li>
+</ol>
+<h3 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h3><ol>
+<li><p>扩展性良好</p>
+<p>解释器是一个简单语法分析工具，修改语法规则只要修改相应的非终结符表达式就可以了，若扩展语法，则只需要增加非终结符类就可以。</p>
+</li>
+</ol>
+<h3 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li><p>会引起类膨胀</p>
+<p>每个语法都要产生一个非终结符表达式，语法规则比较复杂时，可能产生大量的类文件，为维护带来非常多得麻烦。</p>
+</li>
+<li><p>采用递归调用方法</p>
+<p>每个非终结符表达式只关心与自己有关的表达式，每个表达式需要知道最终的结果，必须一层层剥茧，不论面向过程还是面向对象的语言，递归都是在必要条件下使用的，导致调试非常复杂。想想看，如果要排查一个语法错误，还需要一个个断点调试下去，知道最小的语法单元。</p>
+</li>
+<li><p>效率问题</p>
+<p>使用了大量的循环和递归。在用于解析复杂、冗长的语法时，效率是难以忍受的。</p>
+</li>
+</ol>
+<h3 id="注意事项-3"><a href="#注意事项-3" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li>尽量不要在重要的模块中使用解释器模式，否则维护会是一个大问题。在项目中可以使用 shell、JRuby、Groovy 等脚本语言来代替解释器模式，弥补 java 编译型语言的不足。比如在银行分析型项目中采用 JRuby 进行运算处理，避免使用解释器模式的四则匀速，保证效率和性能。</li>
+<li>解释器模式在实际的系统开发中使用较少，一般在大中型的框架型项目能够找到它的身影，如一些数据分析工具、报表设计工具、科学计算工具等。若确实遇到 “一种特定类型的问题发生的频率足够高” 的情况，准备使用解释器模式时，可以考虑 Expression4J、MESP(Math Expression String Parser)、Jep 等开源的解析工具包，尽量避免自己从头编写解释器。</li>
+</ol>
+<h3 id="代码演示-4"><a href="#代码演示-4" class="headerlink" title="代码演示"></a>代码演示</h3><ol>
+<li><p><strong>通用源码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 环境角色，例如存放 hashmap</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 抽象表达式是生成语法集合（也叫语法树）的关键，每个语法集合完成指定语法解析任务，通过递归调用，最终由最小的语法单元进行解析完成</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Expression</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Object <span class="title">interpreter</span><span class="params">(Context ctx)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 终结符表达式主要处理场景元素和数据的转换。终结符表达式不能再参与比自己更小的文法运算。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TerminalExpression</span> <span class="keyword">extends</span> <span class="title">Expression</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 通常终结符表达式只有一个，但是有多个对象</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">interpreter</span><span class="params">(Context ctx)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 每个非终结符表达式都代表了一个文法规则，并且每个文法规则都只关心自己周边的文法规则的结果，</span></span><br><span class="line"><span class="comment"> * 因此产生了每个非终结表达式调用自己周边的非终结符表达式，然后最终、最小的文法规则就是终结符表达式。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NonterminalExpression</span> <span class="keyword">extends</span> <span class="title">Expression</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 每个非终结符表达式都会对其他表达式产生依赖</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NonterminalExpression</span><span class="params">(Expression... expressions)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">interpreter</span><span class="params">(Context ctx)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 封装类，传递进来一个规范语法文件，解析器分析后产生结果并返回，避免了调用者与语法解析器的耦合关系</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Context context = <span class="keyword">new</span> Context();</span><br><span class="line">        <span class="comment">// 通常定义一个语法容器，容纳一个具体的表达式，例如 ListArray、LinkedList、Stack 等类型</span></span><br><span class="line">        Stack&lt;Expression&gt; stack = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">for</span> (; ; ) &#123;</span><br><span class="line">            <span class="comment">// 进行语法判断，并产生递归调用</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 产生一个完整的语法树，由多个具体的语法分析进行解析</span></span><br><span class="line">        Expression exp = stack.pop();</span><br><span class="line">        exp.interpreter(context);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>案例</p>
+<p>输入一个模型公式（例如加减运算），然后输入模型中的参数，运算出结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象表达式</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractExpression</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 解析公式和数值，其中 key 是公式中的参数，value 是具体的数字</span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">interpreter</span><span class="params">(HashMap&lt;String, Integer&gt; <span class="keyword">var</span>)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 变量解析器</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VarExpression</span> <span class="keyword">extends</span> <span class="title">AbstractExpression</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String key;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">interpreter</span><span class="params">(HashMap&lt;String, Integer&gt; <span class="keyword">var</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">var</span>.get(<span class="keyword">this</span>.key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象运算符号解析器</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">SymbolExpression</span> <span class="keyword">extends</span> <span class="title">AbstractExpression</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 所有的解析公式都应只关心自己左右两个表达式的结果</span></span><br><span class="line">    <span class="keyword">protected</span> AbstractExpression left;</span><br><span class="line">    <span class="keyword">protected</span> AbstractExpression right;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加法解析器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AddExpression</span> <span class="keyword">extends</span> <span class="title">SymbolExpression</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AddExpression</span><span class="params">(AbstractExpression left, AbstractExpression right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(left, right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//把左右两个表达式运算的结果相加</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">interpreter</span><span class="params">(HashMap&lt;String, Integer&gt; <span class="keyword">var</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.left.interpreter(<span class="keyword">var</span>) + <span class="keyword">super</span>.right.interpreter(<span class="keyword">var</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 减法解析器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubExpression</span> <span class="keyword">extends</span> <span class="title">SymbolExpression</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SubExpression</span><span class="params">(AbstractExpression left, AbstractExpression right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(left, right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">interpreter</span><span class="params">(HashMap&lt;String, Integer&gt; <span class="keyword">var</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.left.interpreter(<span class="keyword">var</span>) - <span class="keyword">super</span>.right.interpreter(<span class="keyword">var</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解析器封装类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 定义表达式</span></span><br><span class="line">    <span class="keyword">private</span> AbstractExpression expression;</span><br><span class="line">    <span class="comment">// 构造函数传参，并解析</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Calculator</span><span class="params">(String expStr)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 定义一个栈，安排运算的先后顺序</span></span><br><span class="line">        Stack&lt;AbstractExpression&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="comment">// 表达式拆分为字符数组</span></span><br><span class="line">        <span class="keyword">char</span>[] charArray = expStr.toCharArray();</span><br><span class="line">        <span class="comment">// 运算</span></span><br><span class="line">        AbstractExpression left = <span class="keyword">null</span>;</span><br><span class="line">        AbstractExpression right = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; charArray.length; i++) &#123;</span><br><span class="line">            <span class="keyword">switch</span> (charArray[i]) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'+'</span>:</span><br><span class="line">                    left = stack.pop();</span><br><span class="line">                    right = <span class="keyword">new</span> VarExpression(String.valueOf(charArray[++i]));</span><br><span class="line">                    stack.push(<span class="keyword">new</span> AddExpression(left, right));</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'-'</span>:</span><br><span class="line">                    left = stack.pop();</span><br><span class="line">                    right = <span class="keyword">new</span> VarExpression(String.valueOf(charArray[++i]));</span><br><span class="line">                    stack.push(<span class="keyword">new</span> SubExpression(left, right));</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    stack.push(<span class="keyword">new</span> VarExpression(String.valueOf(charArray[i])));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.expression = stack.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 开始运算</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">run</span><span class="params">(HashMap&lt;String, Integer&gt; <span class="keyword">var</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.expression.interpreter(<span class="keyword">var</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户模拟类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClientCase</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 输入表达式</span></span><br><span class="line">        String expStr = getExpStr();</span><br><span class="line">        <span class="comment">// 获得值映射</span></span><br><span class="line">        HashMap&lt;String, Integer&gt; <span class="keyword">var</span> = getValue(expStr);</span><br><span class="line">        Calculator calculator = <span class="keyword">new</span> Calculator(expStr);</span><br><span class="line">        <span class="keyword">int</span> result = calculator.run(<span class="keyword">var</span>);</span><br><span class="line">        System.out.println(<span class="string">"执行结果是："</span> + result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getExpStr</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"请输入表达式："</span>);</span><br><span class="line">        InputStream in = System.in;</span><br><span class="line">        InputStreamReader inputStreamReader = <span class="keyword">new</span> InputStreamReader(in);</span><br><span class="line">        BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(inputStreamReader);</span><br><span class="line">        <span class="keyword">return</span> bufferedReader.readLine();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> HashMap&lt;String, Integer&gt; <span class="title">getValue</span><span class="params">(String expStr)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">// 解析有几个参数要传递</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : expStr.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c != <span class="string">'+'</span> &amp;&amp; c != <span class="string">'-'</span>) &#123;</span><br><span class="line">                <span class="comment">// 解决重复参数的问题</span></span><br><span class="line">                <span class="keyword">if</span> (!map.containsKey(String.valueOf(c))) &#123;</span><br><span class="line">                    System.out.println(<span class="string">"请输入"</span> + c + <span class="string">"的值："</span>);</span><br><span class="line">                    String in = (<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in))).readLine();</span><br><span class="line">                    map.put(String.valueOf(c), Integer.valueOf(in));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-01T01:22:24+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>last updated at Mar 1, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/blog/tags/book/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>book</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://melodyplayer.github.io/blog/2019/1222:《设计模式之禅》——行为型（下）/&title=《设计模式之禅》——行为型（下） | 旋律演奏猿&summary=11种行为型模式（下）：观察者、备忘录、访问者、状态、解释器"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://melodyplayer.github.io/blog/2019/1222:《设计模式之禅》——行为型（下）/&title=《设计模式之禅》——行为型（下） | 旋律演奏猿&summary=11种行为型模式（下）：观察者、备忘录、访问者、状态、解释器"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://melodyplayer.github.io/blog/2019/1222:《设计模式之禅》——行为型（下）/&title=《设计模式之禅》——行为型（下） | 旋律演奏猿&summary=11种行为型模式（下）：观察者、备忘录、访问者、状态、解释器"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/blog/2019/1215:《设计模式之禅》——行为型（上）/" rel="prev" title="《设计模式之禅》——行为型（上）">
+                                    
+                                        《设计模式之禅》——行为型（上）
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/blog/tags/book/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>book</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Comments</h4>
+      
+      
+      
+        <section id="comments">
+          <div id="gitalk-container"></div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '《设计模式之禅》——行为型（下）',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/blog/archives/" href="/blog/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="blogarchives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          文章归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          开源项目
+        </a></li>
+      
+        <li><a class="flat-box" title="http://ganlu.ren/" href="http://ganlu.ren/"
+          
+            rel="nofollow"
+          
+          
+          id="http:ganlu.ren">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          主题文档
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于小站
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#观察者模式-Observer"><span class="toc-text">观察者模式 Observer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类图"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用场景"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展"><span class="toc-text">扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码演示"><span class="toc-text">代码演示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#备忘录模式-Memento"><span class="toc-text">备忘录模式 Memento</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类图-1"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用场景-1"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意事项-1"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展-1"><span class="toc-text">扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码演示-1"><span class="toc-text">代码演示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问者模式-Visitor"><span class="toc-text">访问者模式 Visitor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类图-2"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用场景-2"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-1"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-1"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展-2"><span class="toc-text">扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码演示-2"><span class="toc-text">代码演示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#状态模式-State"><span class="toc-text">状态模式 State</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类图-3"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用场景-3"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-2"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-2"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意事项-2"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展-3"><span class="toc-text">扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码演示-3"><span class="toc-text">代码演示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释器模式-Interpreter"><span class="toc-text">解释器模式 Interpreter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类图-4"><span class="toc-text">类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用场景-4"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-3"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-3"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意事项-3"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码演示-4"><span class="toc-text">代码演示</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:melodyplayer@163.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/melodyplayer"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=63035382"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  <div>
+    Use
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    as theme
+    
+      , 
+      total visits
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      times
+    
+    . 
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('') {
+          $('').backstretch(
+          ["https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/background/background.png"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/background/background.png"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "f7b04d5efbb48ed07b87",
+      clientSecret: "60124337a5cae7e65a7836ed536ee5e9f40322f1",
+      repo: "melodyplayer.github.io",
+      owner: "melodyplayer",
+      admin: "melodyplayer",
+      
+        id: md5(location.pathname),  // Ensure uniqueness and length less than 50
+      
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+  </script>
+
+
+
+
+
+  <script src="/js/app.js"></script>
+
+
+  <script src="/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
