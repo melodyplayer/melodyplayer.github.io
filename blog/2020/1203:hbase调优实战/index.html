@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>hbase调优实战 | 旋律演奏猿</title>
+  
+  <meta name="keywords" content="博客">
+  
+  
+  <meta name="description" content="演奏程序猿的生活旋律">
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  
+  
+  <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          旋律演奏猿
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogcategories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogtags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogarchives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="http://ganlu.ren/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="http:ganlu.ren">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/blog/2020/1203:hbase%E8%B0%83%E4%BC%98%E5%AE%9E%E6%88%98/">
+        hbase调优实战
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://melodyplayer.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Aaron Hu</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-12-03</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>hbase进阶与大数据存储调优案例。解决高并发大批量写入hbase丢数据问题，优化查询效率从5min减少到7s。</p>
+<span id="more"></span>
+
+<h2 id="hbase介绍"><a href="#hbase介绍" class="headerlink" title="hbase介绍"></a>hbase介绍</h2><h3 id="hbase底层原理"><a href="#hbase底层原理" class="headerlink" title="hbase底层原理"></a>hbase底层原理</h3><p>每个<code>ColumnFamily</code>建一个HStore，HStore由一个Memstore和一系列HFile组成。Memstore位于Region Server的主内存，HFile则被写入到HDFS。需要被写入的数据首先写入Memstore，达到一定阈值flush到HFile中，每次flush都会创建一个新的HFile。</p>
+<p>StoreFile底层以HFile格式KeyValue（hadoop二进制文件）保存，一个StoreFile对应一个HFile。</p>
+<p>当region的某个列族达到一个阈值（默认256M）时就会split出新的region。</p>
+<p>memstore文件比hfile文件大，原因在于heapSize()内存中一个KeyValue对象除了本身实际内容外，还有 64byte是对象的内部实例等占用了部分空间。参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bdifn/p/3776098.html">HBase MemStore与HStoreFile的大小分析</a></p>
+<p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/database/hbase/structure.png"></p>
+<h3 id="关于LSM"><a href="#关于LSM" class="headerlink" title="关于LSM"></a>关于LSM</h3><p>LSM树原理：把一棵大树拆分成N棵小树，它首先写入内存中，随着小树越来越大，内存中的小树会flush到磁盘中，磁盘中的树定期可以做merge操作，合并成一棵大树，以优化读性能。No-SQL数据库一般采用LSM树作为数据结构，HBase也不例外。</p>
+<p>LSM数据更新只在内存中操作，没有磁盘访问，因此比B+树要快。对于数据读来说，如果读取的是最近访问过的数据，LSM树能减少磁盘访问，提高性能。 LSM树实质上就是在读写之间得取平衡，和B+树比相，它牲牺了部份读性能，用来大幅进步写性能。</p>
+<h2 id="全量日志表"><a href="#全量日志表" class="headerlink" title="全量日志表"></a>全量日志表</h2><p>该表存储接口请求的所有业务上报数据，每天几亿。</p>
+<h3 id="region-server"><a href="#region-server" class="headerlink" title="region server"></a>region server</h3><p>数量：29</p>
+<p>单个 server 的 max heap 50G，Direct Memory Configured 50G，Memstore Size 14.6G</p>
+<h3 id="region"><a href="#region" class="headerlink" title="region"></a>region</h3><p>共80个，每个region40G存储空间</p>
+<p>但是只有一个region有效，其他region的数据在spilit完以后已经过期删除，该region信息如下：</p>
+<table>
+<thead>
+<tr>
+<th>Region Name</th>
+<th>Num. Stores</th>
+<th>Num. Storefiles</th>
+<th>Storefile Size Uncompressed</th>
+<th>Storefile Size</th>
+<th>Index Size</th>
+<th>Bloom Size</th>
+<th>Data Locality</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="http://rs060.hbase2.bjy.elong.com:60030/region.jsp?name=2bc43dc5c0a8a33675177eb79b48a861">hotel:shield_log_total,202004131244_e74d,1586919481374.2bc43dc5c0a8a33675177eb79b48a861.</a></td>
+<td>1</td>
+<td>39</td>
+<td>6188861m</td>
+<td>1728442m</td>
+<td>4368608k</td>
+<td>4219944k</td>
+<td>1.0</td>
+</tr>
+</tbody></table>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jechedo/p/5145582.html">单个region server 的 region 数目上限</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35440040/article/details/83823583">hbase split操作</a></p>
+<h3 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;hotel:shield_log_total&#x27;, &#123;NAME =&gt; &#x27;log_info&#x27;, BLOOMFILTER =&gt; &#x27;ROW&#x27;, VERSIONS =&gt; &#x27;1&#x27;, IN_MEMORY =&gt; &#x27;false&#x27;, KEEP_DELETED_CELLS =&gt; &#x27;FALSE&#x27;, DATA_BLOCK_ENCODING =&gt; &#x27;NONE&#x27;, TTL =&gt; &#x27;2592000 SECONDS (30 DAYS)&#x27;, COMPRESSION =&gt; &#x27;LZO&#x27;, MIN_VERSIONS =&gt; &#x27;0&#x27;, BLOCKCACHE =&gt; &#x27;true&#x27;, BLOCKSIZE =&gt; &#x27;65536&#x27;, REPLICATION_SCOPE =&gt; &#x27;0&#x27;, CONFIGURATION =&gt; &#123;&#x27;hbase.hregion.max.filesize&#x27; =&gt; &#x27;42949672960&#x27;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>mob说明：<a target="_blank" rel="noopener" href="https://blog.csdn.net/bingdianone/article/details/84863248">https://blog.csdn.net/bingdianone/article/details/84863248</a></p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># region 副本数</span></span><br><span class="line"><span class="meta">dfs.replication</span>=<span class="string">3</span></span><br><span class="line"><span class="comment"># 该值&gt;=3时才开启mob特性</span></span><br><span class="line"><span class="meta">hfile.format.version</span>=<span class="string">2</span></span><br><span class="line"><span class="comment"># mob 压缩批处理中允许的最大mob文件数量，合并小的mob文件，mob特性用于存储二进制，如图片等</span></span><br><span class="line"><span class="meta">hbase.mob.file.compaction.batch.size</span>=<span class="string">100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入 memstore 的累计大小超过该值时执行flush，生成 hfile</span></span><br><span class="line"><span class="meta">hbase.hregion.memstore.flush.size</span>=<span class="string">134217728（128M）</span></span><br><span class="line"><span class="comment"># 单个Region内所有的memstore大小总和,超过则flush到磁盘，默认值0.4。这个参数的作用是防止内存占用过大，当ReigonServer内所有region的memstores所占用内存总和达到heap的40%时，HBase会强制block所有的更新并flush这些region以释放所有memstore占用的内存。</span></span><br><span class="line"><span class="attr">hbase.regionserver.global.memstore.upperLimit</span></span><br><span class="line"><span class="comment"># 默认值0.35。在所有region的memstores所占用内存达到Heap的35%时，不flush所有的memstore。它会找一个memstore内存占用最大的region，做个别flush，此时写更新还是会被block。</span></span><br><span class="line"><span class="attr">base.regionserver.global.memstore.lowerLimit</span></span><br><span class="line"><span class="comment"># 单个memstore大小超过该倍数值则block所有写入请求，自我保护</span></span><br><span class="line"><span class="attr">hbase.hregion.memstore.block.multiplier</span></span><br><span class="line"><span class="comment"># 一次 minor compaction最少合并的HFile数量，高版本叫 hbase.hstore.compaction.min</span></span><br><span class="line"><span class="meta">hbase.hstore.compactionThreshold</span>=<span class="string">3</span></span><br><span class="line"><span class="comment"># Major compaction周期性时间间隔，默认值604800000，单位ms。HBase 0.96.x及之前默认为1天调度一次。设置为 0 表示禁用自动触发major compaction。</span></span><br><span class="line"><span class="meta">hbase.hregion.majorcompaction</span>=<span class="string">0</span></span><br><span class="line"><span class="comment"># 一次 minor compaction最多合并的HFile数量，默认值 10。这个参数也是控制着一次压缩的时间。</span></span><br><span class="line"><span class="meta">hbase.hstore.compaction.max</span>=<span class="string">10</span></span><br><span class="line"><span class="comment"># compaction过程中，每次从Hfile中读取kv的个数</span></span><br><span class="line"><span class="meta">hbase.hstore.compaction.kv.max</span>=<span class="string">100</span></span><br><span class="line"><span class="comment"># 每隔一定时间检查是否需要进行compaction</span></span><br><span class="line"><span class="meta">hbase.server.thread.wakefrequency</span>=<span class="string">100</span></span><br><span class="line"><span class="comment"># large 和 small compaction 线程池线程数</span></span><br><span class="line"><span class="meta">hbase.regionserver.thread.compaction.small</span>=<span class="string">40</span></span><br><span class="line"><span class="meta">hbase.regionserver.thread.compaction.large</span>=<span class="string">2</span></span><br><span class="line"><span class="comment"># compact（major和minor）请求进入large和small compact线程池的临界点，默认 2 * this.minFilesToCompact * this.region.memstoreFlushSize</span></span><br><span class="line"><span class="meta">hbase.regionserver.thread.compaction.throttle</span>=<span class="string">？</span></span><br><span class="line"><span class="comment"># 超过该值阻塞写入</span></span><br><span class="line"><span class="meta">hbase.hstore.blockingStoreFiles</span>=<span class="string">40</span></span><br><span class="line"><span class="comment"># 阻塞写入的时间，单位ms</span></span><br><span class="line"><span class="meta">hbase.hstore.blockingWaitTime</span>=<span class="string">30000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一个region中最大store的压缩后的hfile大小，大于设置阈值之后触发region切分（对于下面的策略来说）</span></span><br><span class="line"><span class="meta">hbase.hregion.max.filesize</span>=<span class="string">10737418240(10G)</span></span><br><span class="line"><span class="comment"># 切分策略，线上使用hbase版本是1.2.0，默认采用该策略。使用上面的store配置进行切分</span></span><br><span class="line"><span class="comment"># 0.98版本后默认使用IncreasingToUpperBoundRegionSplitPolicy</span></span><br><span class="line"><span class="meta">hbase.regionserver.region.split.policy</span>=<span class="string">org.apache.hadoop.hbase.regionserver.ConstantSizeRegionSplitPolicy</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="写入问题"><a href="#写入问题" class="headerlink" title="写入问题"></a>写入问题</h3><h4 id="热点问题"><a href="#热点问题" class="headerlink" title="热点问题"></a>热点问题</h4><p>rowkey写入规则为yyyyMMddHHmm_唯一标识，存在写入热点问题，频繁超时、日志丢失，需要优化。</p>
+<h4 id="flush频率较高"><a href="#flush频率较高" class="headerlink" title="flush频率较高"></a>flush频率较高</h4><p>如图所示，flush间隔时间大约10s，每次flush128M数据</p>
+<p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/database/hbase/flush.png"></p>
+<h4 id="compact问题"><a href="#compact问题" class="headerlink" title="compact问题"></a>compact问题</h4><p>现在的配置是每个region最多40个hfile，flush频繁导致compact也会很频繁。</p>
+<ol>
+<li><p>参考</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mt0803/article/details/9372227">HBase compact 总结 及 调优配置</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011598442/article/details/90632702">深入理解 HBase Compaction 机制</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zyc88888/article/details/79666846">HBase Compaction详解</a></p>
+</li>
+<li><p>compaction触发条件：memstore flush时检查、定时任务周期检查、hbase shell 或 master ui 或 hbase api 等方式手动触发。</p>
+</li>
+<li><p>写请求非常多导致不断生成HFile，但compact的速度远远跟不上HFile生成的速度，这样就会使HFile的数量会越来越多，导致读性能急剧下降。为了避免这种情况，在HFile的数量过多的时候会限制写请求的速度：在每次执行MemStore flush的操作前，如果HStore的HFile数超过hbase.hstore.blockingStoreFiles （默认7），则会阻塞flush操作hbase.hstore.blockingWaitTime时间，在这段时间内，如果compact操作使得HStore文件数下降到回这个值，则停止阻塞。另外阻塞超过时间后，也会恢复执行flush操作。这样做就可以有效地控制大量写请求的速度，但同时这也是影响写请求速度的主要原因之一。</p>
+</li>
+<li><p>HBase主要有两种minor策略：RatioBasedCompactionPolicy（0.94默认，我们采用的）和ExploringCompactionPolicy（0.96后默认，IO性能提升10%）</p>
+</li>
+</ol>
+<h4 id="region-split-问题"><a href="#region-split-问题" class="headerlink" title="region split 问题"></a>region split 问题</h4><ol>
+<li><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lingbo229/article/details/82751576">HBase最佳实践之Region数量&amp;大小</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/op07p6Aaqo9u71/article/details/78794734">HBase Region自动切分的所有细节</a></p>
+<p>memstore总大小默认为堆内存的40%</p>
+</li>
+<li><p>当单个hfile大小超过限额时，会出现 region split。目前全量日志表没有做预分区，因此所有日志都向一个region写，当写入频繁而region非常大时，会出现<a href="%5Bhttps://www.yuanmas.com/info/9ezZwrWZa6.html">Hbase写入量大导致region过大无法split</a></p>
+<p>正常split：隔几天split一次</p>
+<p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/database/hbase/split_normal.png"></p>
+<p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/database/hbase/split_normal_2.png"></p>
+<p>太大无法spilit：很久没有split</p>
+<p><img src="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/blog/database/hbase/split_abnormal.png"></p>
+</li>
+</ol>
+<h3 id="写入问题分析和解决思路"><a href="#写入问题分析和解决思路" class="headerlink" title="写入问题分析和解决思路"></a>写入问题分析和解决思路</h3><ol>
+<li><p>由于hbase数据是按照字典序排序，没有分区会导致连续数据集中写入同一个region，所以解决写入热点问题主要原理是将并发写入的数据打散，分布均匀的写入到多个region。</p>
+</li>
+<li><p>写入数据总览</p>
+<p>region名：<a target="_blank" rel="noopener" href="http://rs067.hbase2.bjy.elong.com:60030/region.jsp?name=f6a7dfcbe71eb36e12047c2c1e1dae40">hotel:shield_log_total,202010281022_abdf:,1604395921838.f6a7dfcbe71eb36e12047c2c1e1dae40.</a></p>
+<p>文件起始 202010281022，截止到202011041022，<strong>Storefile Size Uncompressed</strong> 4788807m（4676G），<strong>Storefile Size</strong> 1352194m（1320G）</p>
+<p>共计7天的数据，按照压缩后的文件大小计算后约 <strong>188.6G/d</strong>，约 7.86G/h，按照总量是35G/h。</p>
+</li>
+<li><p>解决方案先预分区，然后根据读取性能需要，将messageId按照hash方式映射到各个region中，再加上时间戳。分区案例：<code>create &#39;hotel:shield_log_analyse_ip&#39;, &#123;NAME =&gt; &#39;info&#39;,  TTL =&gt; &#39;7776000&#39;&#125;, &#123;SPLITS =&gt; [&#39;20&#39;, &#39;40&#39;, &#39;60&#39;, &#39;80&#39;]&#125;</code></p>
+</li>
+<li><p>计算每RS（假设一个表）region的数量的公式为：</p>
+<p>((RS memory) * (total memstore fraction)) / ((memstore size)*(# column families))</p>
+<p>例如： 如果 一个RegionServer配置的内存是16g,使用默认配置（ hbase默认regionserver分给memstore的比例是0.4 ， 默认的menstore的占用128M内存 ）， 一个CF，那么这个regionServer下的region的个数大约为 16384 * 0.4 / （128*1） = 51个，实际测试大于这个数 一两倍 也没太大的问题。 一个HBase表包含一至多个region，那么表的数目上限也是可以估算出来的。</p>
+</li>
+</ol>
+<h3 id="读取问题"><a href="#读取问题" class="headerlink" title="读取问题"></a>读取问题</h3><h4 id="全量扫描读取缓慢"><a href="#全量扫描读取缓慢" class="headerlink" title="全量扫描读取缓慢"></a>全量扫描读取缓慢</h4><h4 id="读取问题分析和解决思路"><a href="#读取问题分析和解决思路" class="headerlink" title="读取问题分析和解决思路"></a>读取问题分析和解决思路</h4><ol>
+<li><p>查询条件均包含时间，核心的几个处理流程基本上都会指定渠道或actions，日志分析还包括resultType因此在设计rowkey可以给rowkey增加这些字段，让查询速度更快。</p>
+</li>
+<li><p>避免热点的话就需要预分区，比如可以分为100个预分区（00-99），按照上面统计的35G/h，这样每个分区每小时0.35G数据。提高写性能主要是减少compact次数，按照每个memstore 128M，大约350M/128M=3次/h，约20分钟写一次hfile，而超过40次才会发生compact，这样compact的间隔可以控制在40/3=13h。每天大约发生两次compact，hbase写入由原先的10s一次，大约12h发生4000次compact，写入性能大大提高。</p>
+</li>
+<li><p>预分区前缀会导致查询时遍历所有region，导致查询性能降低这个是不可避免的一个趋势，可以通过多线程去解决这个问题。但是由于需要兼容之前的逻辑，所以需要在每个region里查询时都要尽量带上时间戳。但是rowkey也不能设计的过长避免浪费内存（写入和compact都以kv形式存在），所以初步设计rowkey如下：</p>
+<blockquote>
+<p>分区号_yyyyMMddHHmm_source_method_resultType_uuid，例如 25_202011042324_Andriod_getHotelList_1_ask54n83fal4</p>
+</blockquote>
+</li>
+<li><p>最后就是考虑查询时的代码兼容。老表数据量严重超标而且无法split已经不堪重负，直接写入新rowkey没多大意义。而且预分区需要在建表时指定，新建一个表数据双写，等过了几天之后一键切换表名。然后就是查询，考虑兼容时间问题，在每个region查询时都要在分区数字之后加上时间戳。website项目里主要是去修改公共的查询方法，在时间戳前面加上region分区号，遍历每个region指定时间的数据后统一返回。mapreduce需要在main入口输入起始startRowkey和endRowkey，加入正则或者字符串过滤器。</p>
+</li>
+<li><p>bloomfilter提高随机读性能，row只针对行，rowcol针对行和列，可以只查满足条件的storefile。但该表主要是scan，没有get场景，不需要设置bloomfilter。</p>
+</li>
+<li><p>第一版建表语句如下：（随机分区）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create &#x27;hotel:shield_log&#x27;, &#123;NAME =&gt; &#x27;log_info&#x27;,  TTL =&gt; &#x27;2592000&#x27;, VERSION =&gt; &#x27;1&#x27;&#125;, &#123;SPLITS =&gt; [&#x27;00&#x27;, &#x27;01&#x27;, &#x27;02&#x27;, &#x27;03&#x27;, ..., &#x27;99&#x27;]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>保留30天数据，预分区100个，每份数据保留版本1个</p>
+<p>效果：但无法兼容之前的分页查询</p>
+</li>
+<li><p>第二版建表语句如下：（新版，翻转时间串）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create &#x27;hotel:shield_log&#x27;, &#123;NAME =&gt; &#x27;log_info&#x27;,  TTL =&gt; &#x27;2592000&#x27;, VERSION =&gt; &#x27;1&#x27;&#125;, &#123;SPLITS =&gt; [&#x27;00&#x27;, &#x27;01&#x27;, &#x27;02&#x27;, &#x27;03&#x27;, ..., &#x27;59&#x27;]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>保留30天数据，预分区60个（一分钟一个分区），每份数据保留版本1个</p>
+<p>rowkey设计：</p>
+<blockquote>
+<p>二期：mmHHddMM_periodId_sourceId_uri_resultType_uuid</p>
+<p>例如42082511_2_112_123_/abc/dss_ask54n83fal4</p>
+<p>一期：mmHHddMM_periodId_sourceId_method_resultType_uuid</p>
+<p>例如 42082511_1_100_102_getHotelDetail_kasdlew23fd</p>
+</blockquote>
+<p>效果：原来需要查一分钟的日志量需要耗时60s左右，现在只需要3s。但是需要对原来的时间格式做修改，仍然无法做到不改动其他逻辑兼容之前顺序设计的时间格式</p>
+</li>
+<li><p>最终修改版建表语句：（分钟数单独作为分区位，时间串保持之前的顺序格式）</p>
+<blockquote>
+<p>mm_yyyyMMddHHmm_periodId_sourceId_uri_resultType_uuid</p>
+<p>例如 12_202012031012_2_233_/abc/ddd_asdlkfasd3</p>
+</blockquote>
+<p>效果：完全兼容老版本，并减少scan扫描的数据量。经测试，原表查询5分钟的数据，新表只需7s。</p>
+</li>
+</ol>
+<h3 id="hbase其他优化"><a href="#hbase其他优化" class="headerlink" title="hbase其他优化"></a>hbase其他优化</h3><p><a target="_blank" rel="noopener" href="http://www.blogjava.net/DLevin/archive/2015/08/22/426877.html">http://www.blogjava.net/DLevin/archive/2015/08/22/426877.html</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.blogjava.net/DLevin/archive/2015/08/22/426950.html">http://www.blogjava.net/DLevin/archive/2015/08/22/426950.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/69740865">https://zhuanlan.zhihu.com/p/69740865</a></p>
+<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><p>HBase在写入数据块到HDFS之前会首先对数据进行压缩，再落盘，从而减少磁盘空间使用量。而在读数据的时候首先从HDFS中加载出block块之后进行解压缩，然后再缓存到BlockCache，最后返回给用户。</p>
+<table>
+<thead>
+<tr>
+<th>压缩算法</th>
+<th>压缩比率</th>
+<th>压缩速度</th>
+<th>解压速度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GZIP</td>
+<td>13.4%</td>
+<td>21 MB/s</td>
+<td>118 MB/s</td>
+</tr>
+<tr>
+<td>LZO</td>
+<td>20.5%</td>
+<td>135 MB/s</td>
+<td>410 MB/s</td>
+</tr>
+<tr>
+<td>Snappy</td>
+<td>22.2%</td>
+<td>172 MB/s</td>
+<td>409 MB/s</td>
+</tr>
+</tbody></table>
+<p>综合来看，Snappy的压缩率最低，但是编解码速率最高，对CPU的消耗也最小，目前一般建议使用Snappy。</p>
+<h3 id="后续跟踪"><a href="#后续跟踪" class="headerlink" title="后续跟踪"></a>后续跟踪</h3><p>按照新方案设计的全量日志表shield_log在读写方面完全解决掉了之前的痛点问题，但是时间长了以后会发现，仅过去一个月切分出了800个分区。。原因还是日志量过大split分区频繁。此时需要加以其他辅助，例如将老的region进行合并或删除等。</p>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-10T10:46:58+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>last updated at Mar 10, 2021</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/blog/tags/database/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>database</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://melodyplayer.github.io/blog/2020/1203:hbase%E8%B0%83%E4%BC%98%E5%AE%9E%E6%88%98/&title=hbase调优实战 | 旋律演奏猿&summary=hbase进阶与大数据存储调优案例。解决高并发大批量写入hbase丢数据问题，优化查询效率从5min减少到7s。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://melodyplayer.github.io/blog/2020/1203:hbase%E8%B0%83%E4%BC%98%E5%AE%9E%E6%88%98/&title=hbase调优实战 | 旋律演奏猿&summary=hbase进阶与大数据存储调优案例。解决高并发大批量写入hbase丢数据问题，优化查询效率从5min减少到7s。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://melodyplayer.github.io/blog/2020/1203:hbase%E8%B0%83%E4%BC%98%E5%AE%9E%E6%88%98/&title=hbase调优实战 | 旋律演奏猿&summary=hbase进阶与大数据存储调优案例。解决高并发大批量写入hbase丢数据问题，优化查询效率从5min减少到7s。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/blog/2020/0527:neo4j%E5%AE%9E%E6%88%98/" rel="prev" title="neo4j实战">
+                                    
+                                        neo4j实战
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/blog/tags/database/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>database</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Comments</h4>
+      
+      
+      
+        <section id="comments">
+          <div id="gitalk-container"></div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'hbase调优实战',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/blog/archives/" href="/blog/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="blogarchives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          文章归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          开源项目
+        </a></li>
+      
+        <li><a class="flat-box" title="http://ganlu.ren/" target="_blank" href="http://ganlu.ren/"
+          
+            rel="nofollow noopener"
+          
+          
+          id="http:ganlu.ren">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow noopener"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          主题文档
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于小站
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hbase%E4%BB%8B%E7%BB%8D"><span class="toc-text">hbase介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hbase%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="toc-text">hbase底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8ELSM"><span class="toc-text">关于LSM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E9%87%8F%E6%97%A5%E5%BF%97%E8%A1%A8"><span class="toc-text">全量日志表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#region-server"><span class="toc-text">region server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#region"><span class="toc-text">region</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-text">表结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E9%97%AE%E9%A2%98"><span class="toc-text">写入问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%83%AD%E7%82%B9%E9%97%AE%E9%A2%98"><span class="toc-text">热点问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flush%E9%A2%91%E7%8E%87%E8%BE%83%E9%AB%98"><span class="toc-text">flush频率较高</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#compact%E9%97%AE%E9%A2%98"><span class="toc-text">compact问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#region-split-%E9%97%AE%E9%A2%98"><span class="toc-text">region split 问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90%E5%92%8C%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><span class="toc-text">写入问题分析和解决思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E9%97%AE%E9%A2%98"><span class="toc-text">读取问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E9%87%8F%E6%89%AB%E6%8F%8F%E8%AF%BB%E5%8F%96%E7%BC%93%E6%85%A2"><span class="toc-text">全量扫描读取缓慢</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90%E5%92%8C%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><span class="toc-text">读取问题分析和解决思路</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hbase%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96"><span class="toc-text">hbase其他优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9"><span class="toc-text">压缩</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E8%B7%9F%E8%B8%AA"><span class="toc-text">后续跟踪</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:melodyplayer@163.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/melodyplayer"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=63035382"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  <div>
+    Use
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    as theme
+    
+      , 
+      total visits
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      times
+    
+    . 
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('') {
+          $('').backstretch(
+          ["https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/background/background.png"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/background/background.png"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "f7b04d5efbb48ed07b87",
+      clientSecret: "60124337a5cae7e65a7836ed536ee5e9f40322f1",
+      repo: "melodyplayer.github.io",
+      owner: "melodyplayer",
+      admin: "melodyplayer",
+      
+        id: md5(location.pathname),  // Ensure uniqueness and length less than 50
+      
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+  </script>
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
