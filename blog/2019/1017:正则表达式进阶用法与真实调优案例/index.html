@@ -344,7 +344,7 @@
 
 <h3 id="解决方法：采用进阶匹配模式"><a href="#解决方法：采用进阶匹配模式" class="headerlink" title="解决方法：采用进阶匹配模式"></a>解决方法：采用进阶匹配模式</h3><h4 id="正则模式：贪婪、勉强、侵占"><a href="#正则模式：贪婪、勉强、侵占" class="headerlink" title="正则模式：贪婪、勉强、侵占"></a>正则模式：贪婪、勉强、侵占</h4><p>假定字符串为：aahelloworldhello</p>
 <ul>
-<li><p>贪婪模式（<code>.*he</code>）：将正则分为两个模式 p1 <code>.*</code> 以及 p2 <code>wo</code> 。</p>
+<li><p>贪婪模式（<code>.*he</code>）：将正则分为两个模式 p1 <code>.*</code> 以及 p2 <code>he</code> 。</p>
 <ol>
 <li><p>第一轮匹配：p1读入所有字符串，那么p2就没什么都没匹配到。</p>
 </li>
@@ -354,7 +354,7 @@
 </li>
 </ol>
 </li>
-<li><p>勉强模式（<code>.*?he</code>）：最小匹配方式。此时的正则模式为 <code>.*?</code> 和 <code>wo</code>。</p>
+<li><p>勉强模式（<code>.*?he</code>）：最小匹配方式。此时的正则模式为 <code>.*?</code> 和 <code>he</code>。</p>
 <ol>
 <li>第一次匹配：p1由于是0或任意次，被忽略，用字符串整体去匹配 p2，当然失败。</li>
 <li>第二次匹配：p1读入第一个字符 a，匹配成功，剩余的 ahelloworldhello 由 p2匹配，失败。</li>
@@ -432,10 +432,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-03T02:00:42+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-10T15:32:59+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>last updated at Nov 3, 2019</p>
+    <p>last updated at Mar 10, 2021</p>
   </a>
 </div>
 
