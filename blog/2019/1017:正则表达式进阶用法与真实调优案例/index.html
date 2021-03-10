@@ -389,25 +389,25 @@
 <h4 id="非获取匹配-Non-Capturing"><a href="#非获取匹配-Non-Capturing" class="headerlink" title="非获取匹配 Non-Capturing"></a>非获取匹配 Non-Capturing</h4><p>在子模式内部前面添加 <code>?:</code>。表示这个子模式的匹配内容不会被保存，不能用于后向引用中。</p>
 <p>例如：Windows 95 and Windows 98 are the successor. Then Windows 2000 and Windows Xp appeared. Windows Vista is the Latest version of the family.</p>
 <p>正则：<code>Windows (?:[\w]+\b)</code></p>
-<p>匹配：<strong>Windows 95</strong> and <strong>Windows 98</strong> are the successor. Then <strong>Windows 2000</strong> and <strong>Windows Xp</strong> appeared. <strong>Windows Vista</strong> is the Latest version of the family.</p>
+<p>匹配：<code>Windows 95</code> and <code>Windows 98</code> are the successor. Then <code>Windows 2000</code> and <code>Windows Xp</code> appeared. <code>Windows Vista</code> is the Latest version of the family.</p>
 <p>结果：只匹配内容，但并未保存子匹配的结果</p>
 <ul>
 <li><p>正向肯定预查：在子模式内部前面加 <code>?=</code>，子模式仅仅作为条件限制，并不作为匹配结果输出，匹配子模式前面的内容。</p>
 <p>正则：<code>Windows (?=[\d]+\b)</code></p>
-<p>匹配：<strong>Windows</strong> 95 and <strong>Windows</strong> 98 are the successor. Then <strong>Windows</strong> 2000 and Windows Xp appeared. Windows Vista is the Latest version of the family.</p>
+<p>匹配：<code>Windows</code> 95 and <code>Windows</code> 98 are the successor. Then <code>Windows</code> 2000 and Windows Xp appeared. Windows Vista is the Latest version of the family.</p>
 </li>
 <li><p>正向否定预查：在子模式内部前面加 <code>?!</code>。</p>
 <p>正则：<code>Windows (?![\d]+\b)</code></p>
-<p>匹配：Windows 95 and Windows 98 are the successor. Then Windows 2000 and <strong>Windows</strong> Xp appeared. <strong>Windows</strong> Vista is the Latest version of the family.</p>
+<p>匹配：Windows 95 and Windows 98 are the successor. Then Windows 2000 and <code>Windows</code> Xp appeared. <code>Windows</code> Vista is the Latest version of the family.</p>
 </li>
 <li><p>反向肯定预查：在子模式内部前面加 <code>?&lt;=</code>，匹配子模式后面的结果作为匹配结果。</p>
 <p>例如：CNY:100.2 USD:222.1 USD:301.3 HKD:122.1 CNY:114.4</p>
 <p>正则：<code>(?&lt;=CNY:)\d+\.\d</code></p>
-<p>匹配：CNY:<strong>100.2</strong>  USD:222.1 USD:301.3 HKD:122.1 CNY:<strong>114.4</strong></p>
+<p>匹配：CNY:<code>100.2</code>  USD:222.1 USD:301.3 HKD:122.1 CNY:<code>114.4</code></p>
 </li>
 <li><p>反向否定预查：在子模式内部前面加 <code>?&lt;!</code></p>
 <p>正则：<code>(?&lt;!CNY:)\b\d+\.\d</code></p>
-<p>匹配：CNY:100.2 USD:<strong>222.1</strong> USD:<strong>301.3</strong> HKD:<strong>122.1</strong> CNY:114.4</p>
+<p>匹配：CNY:100.2 USD:<code>222.1</code> USD:<code>301.3</code> HKD:<code>122.1</code> CNY:114.4</p>
 </li>
 </ul>
 <h4 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h4><ul>
@@ -432,7 +432,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-10T15:32:59+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-10T15:46:48+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>last updated at Mar 10, 2021</p>
