@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <title>正则表达式进阶用法与真实调优案例 | 旋律演奏猿</title>
   
@@ -14,14 +14,14 @@
 
   
 
-  <meta name="HandheldFriendly" content="True">
+  <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!-- meta -->
   
 
   <!-- link -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
   
@@ -29,11 +29,13 @@
   
 
   
-  <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/favicon/favicon.ico">
+  <link rel="shortcut icon" type='image/x-icon' href="https://raw.githubusercontent.com/melodyplayer/asserts/master/photo/favicon/favicon.ico">
   
 
   
-    <link rel="stylesheet" href="/style.css">
+    
+<link rel="stylesheet" href="/style.css">
+
   
 
   <script>
@@ -44,7 +46,7 @@
 
   
   
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   
@@ -174,9 +176,9 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="http://ganlu.ren/"
+							<a class="nav flat-box" target="_blank" href="http://ganlu.ren/"
                 
-                  rel="nofollow"
+                  rel="nofollow noopener"
                 
                 
                 id="http:ganlu.ren">
@@ -185,9 +187,9 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
                 
-                  rel="nofollow"
+                  rel="nofollow noopener"
                 
                 
                 id="https:xaoxuu.comwikimaterial-x">
@@ -233,7 +235,7 @@
         
   
     <h1 class="title">
-      <a href="/blog/2019/1017:正则表达式进阶用法与真实调优案例/">
+      <a href="/blog/2019/1017:%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95%E4%B8%8E%E7%9C%9F%E5%AE%9E%E8%B0%83%E4%BC%98%E6%A1%88%E4%BE%8B/">
         正则表达式进阶用法与真实调优案例
       </a>
     </h1>
@@ -308,16 +310,16 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           <p> 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h3 id="正则表达式基础"><a href="#正则表达式基础" class="headerlink" title="正则表达式基础"></a>正则表达式基础</h3><p>为节省版面直击要害，基础内容本文不作赘述，请点击以下链接查看：</p>
-<p><a href="http://tool.oschina.net/uploads/apidocs/jquery/regexp.html" target="_blank" rel="noopener">表达式全集</a></p>
-<p><a href="https://www.cnblogs.com/fozero/p/7868687.html" target="_blank" rel="noopener">史上最全常用正则表达式大全</a></p>
+<p><a target="_blank" rel="noopener" href="http://tool.oschina.net/uploads/apidocs/jquery/regexp.html">表达式全集</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fozero/p/7868687.html">史上最全常用正则表达式大全</a></p>
 <h3 id="真实案例：超级慢的正则表达式"><a href="#真实案例：超级慢的正则表达式" class="headerlink" title="真实案例：超级慢的正则表达式"></a>真实案例：超级慢的正则表达式</h3><p>常用的正则表达式一般几秒内解析完毕，那么见过3分钟都没解析出来的正则表达式吗？请往下看：</p>
 <h4 id="解析目标"><a href="#解析目标" class="headerlink" title="解析目标"></a>解析目标</h4><p>过滤请求中不合法的 uri（不包含参数），如包含特殊符号<code>- = + % ?</code>、多个斜杠<code>//</code>、中文等。</p>
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p>正则表达式：<code>&quot;^(/?[A-Za-z0-9\\-]+/?[A-Za-z0-9\\-]+)+/?&quot;</code></p>
 <p>编写 java 代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有方法设置成静态的，方便 main 调用</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern URI_PATTERN = Pattern.compile(<span class="string">"^(/?[A-Za-z0-9\\-]+/?[A-Za-z0-9\\-]+)+/?)"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">validateUri</span><span class="params">(String uri)</span> </span>&#123;</span><br><span class="line">  Matcher m = URI_PATTERN.matcher(uri);</span><br><span class="line">  <span class="keyword">return</span> m.matches();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">validate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"开始。。。。。。"</span>);</span><br><span class="line">	System.out.println(validateUri(<span class="string">"/hotel/getUseraaaaaaaasdfasdfasdfasdfasdf+"</span>));</span><br><span class="line">  System.out.println(<span class="string">"结束。。。。。。"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有方法设置成静态的，方便 main 调用</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern URI_PATTERN = Pattern.compile(<span class="string">&quot;^(/?[A-Za-z0-9\\-]+/?[A-Za-z0-9\\-]+)+/?)&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">validateUri</span><span class="params">(String uri)</span> </span>&#123;</span><br><span class="line">  Matcher m = URI_PATTERN.matcher(uri);</span><br><span class="line">  <span class="keyword">return</span> m.matches();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">validate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;开始。。。。。。&quot;</span>);</span><br><span class="line">	System.out.println(validateUri(<span class="string">&quot;/hotel/getUseraaaaaaaasdfasdfasdfasdfasdf+&quot;</span>));</span><br><span class="line">  System.out.println(<span class="string">&quot;结束。。。。。。&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>执行 validate 方法。</p>
 <h4 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h4><p>6C32G mac pro 跑了3分钟没跑完。。没耐心继续等待，直接中断。</p>
@@ -336,7 +338,9 @@
 <li>接着正则的2个分支执行匹配，最终只有 <code>ihao</code>匹配成功，最终匹配到的字符串是 hihaojava。</li>
 </ol>
 <p>看完了正则的匹配过程，就知道为什么前面代码中的正则匹配效率会那么低下了。每个字母都要匹配到最后的+才发现匹配失败，回溯后继续查找，如果忽略其他，只考虑字符串 getUseraaaaaaaasdfasdfasdfasdfasdf+ 和正则 <code>[-A-Za-z0-9]</code> 的影响，时间复杂度就已经为 n^2，类似于以下模拟代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟代码，真实情况远比这个复杂，这里仅为了方便理解</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">execute</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">  String reg = <span class="string">"-ABCDEFGHIJKMLNOPQRSTUVWSYZabcdefghijkmlnopqrstuvwsyz0123456789"</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> length = s.length();</span><br><span class="line">  <span class="keyword">for</span> (; i &lt; length; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; length; j++) &#123;</span><br><span class="line">      count ++;</span><br><span class="line">      String idx = s.substring(j, j + <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">if</span> (!reg.contains(idx)) &#123;</span><br><span class="line">        System.out.println(<span class="string">"匹配失败！特殊字符："</span> + idx);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println(<span class="string">"匹配字符："</span> + idx);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  System.out.println(<span class="string">"一共匹配了 "</span> + count + <span class="string">"次！字符串长度为 "</span> + length);</span><br><span class="line">  <span class="keyword">return</span> i != length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟代码，真实情况远比这个复杂，这里仅为了方便理解</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">execute</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">  String reg = <span class="string">&quot;-ABCDEFGHIJKMLNOPQRSTUVWSYZabcdefghijkmlnopqrstuvwsyz0123456789&quot;</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> length = s.length();</span><br><span class="line">  <span class="keyword">for</span> (; i &lt; length; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; length; j++) &#123;</span><br><span class="line">      count ++;</span><br><span class="line">      String idx = s.substring(j, j + <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">if</span> (!reg.contains(idx)) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;匹配失败！特殊字符：&quot;</span> + idx);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println(<span class="string">&quot;匹配字符：&quot;</span> + idx);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  System.out.println(<span class="string">&quot;一共匹配了 &quot;</span> + count + <span class="string">&quot;次！字符串长度为 &quot;</span> + length);</span><br><span class="line">  <span class="keyword">return</span> i != length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 <h3 id="解决方法：采用进阶匹配模式"><a href="#解决方法：采用进阶匹配模式" class="headerlink" title="解决方法：采用进阶匹配模式"></a>解决方法：采用进阶匹配模式</h3><h4 id="正则模式：贪婪、勉强、侵占"><a href="#正则模式：贪婪、勉强、侵占" class="headerlink" title="正则模式：贪婪、勉强、侵占"></a>正则模式：贪婪、勉强、侵占</h4><p>假定字符串为：aahelloworldhello</p>
 <ul>
@@ -362,7 +366,7 @@
 </li>
 </ul>
 <p>说明：贪婪模式和占有模式相比，贪婪模式会在只有部分匹配成功的条件下，依次从多到少减少匹配成功部分模式的匹配数量，将字符留给模式其他部分去匹配。而占用模式则是占有所有能匹配成功部分，绝不留给其他部分使用。</p>
-<h4 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_GREEDY = Pattern.compile(<span class="string">".*he"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_FORCED = Pattern.compile(<span class="string">".*?he"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_OCCUPIED = Pattern.compile(<span class="string">".*+he"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  String s = <span class="string">"aahelloworldhello"</span>;</span><br><span class="line">  Matcher greedy = PATTERN_GREEDY.matcher(s);</span><br><span class="line">  <span class="keyword">while</span> (greedy.find()) &#123;</span><br><span class="line">    System.out.println(<span class="string">"贪婪模式：匹配到子串 "</span> + greedy.group());</span><br><span class="line">    System.out.println(<span class="string">"贪婪模式：查找匹配到的子串在原始串中的索引位置 "</span> + greedy.start());</span><br><span class="line">    System.out.println(<span class="string">"贪婪模式：查找匹配到的子串最后一个字符串在原串中的位置 "</span> + greedy.end());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher forced = PATTERN_FORCED.matcher(s);</span><br><span class="line">  <span class="keyword">while</span> (forced.find()) &#123;</span><br><span class="line">    System.out.println(<span class="string">"勉强模式：匹配到子串 "</span> + forced.group());</span><br><span class="line">    System.out.println(<span class="string">"勉强模式：查找匹配到的子串在原始串中的索引位置 "</span> + forced.start());</span><br><span class="line">    System.out.println(<span class="string">"勉强模式：查找匹配到的子串最后一个字符串在原串中的位置 "</span> + forced.end());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher occupied = PATTERN_OCCUPIED.matcher(s);</span><br><span class="line">  System.out.println(<span class="string">"侵占模式：匹配原串任意位置返回的结果： "</span> + occupied.find());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_GREEDY = Pattern.compile(<span class="string">&quot;.*he&quot;</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_FORCED = Pattern.compile(<span class="string">&quot;.*?he&quot;</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_OCCUPIED = Pattern.compile(<span class="string">&quot;.*+he&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  String s = <span class="string">&quot;aahelloworldhello&quot;</span>;</span><br><span class="line">  Matcher greedy = PATTERN_GREEDY.matcher(s);</span><br><span class="line">  <span class="keyword">while</span> (greedy.find()) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;贪婪模式：匹配到子串 &quot;</span> + greedy.group());</span><br><span class="line">    System.out.println(<span class="string">&quot;贪婪模式：查找匹配到的子串在原始串中的索引位置 &quot;</span> + greedy.start());</span><br><span class="line">    System.out.println(<span class="string">&quot;贪婪模式：查找匹配到的子串最后一个字符串在原串中的位置 &quot;</span> + greedy.end());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher forced = PATTERN_FORCED.matcher(s);</span><br><span class="line">  <span class="keyword">while</span> (forced.find()) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;勉强模式：匹配到子串 &quot;</span> + forced.group());</span><br><span class="line">    System.out.println(<span class="string">&quot;勉强模式：查找匹配到的子串在原始串中的索引位置 &quot;</span> + forced.start());</span><br><span class="line">    System.out.println(<span class="string">&quot;勉强模式：查找匹配到的子串最后一个字符串在原串中的位置 &quot;</span> + forced.end());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher occupied = PATTERN_OCCUPIED.matcher(s);</span><br><span class="line">  System.out.println(<span class="string">&quot;侵占模式：匹配原串任意位置返回的结果： &quot;</span> + occupied.find());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>返回的结果：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">贪婪模式：匹配到子串 aahelloworldhe</span><br><span class="line">贪婪模式：查找匹配到的子串在原始串中的索引位置 <span class="number">0</span></span><br><span class="line">贪婪模式：查找匹配到的子串最后一个字符串在原串中的位置 <span class="number">14</span></span><br><span class="line">  </span><br><span class="line">勉强模式：匹配到子串 aahe</span><br><span class="line">勉强模式：查找匹配到的子串在原始串中的索引位置 <span class="number">0</span></span><br><span class="line">勉强模式：查找匹配到的子串最后一个字符串在原串中的位置 <span class="number">4</span></span><br><span class="line">勉强模式：匹配到子串 lloworldhe</span><br><span class="line">勉强模式：查找匹配到的子串在原始串中的索引位置 <span class="number">4</span></span><br><span class="line">勉强模式：查找匹配到的子串最后一个字符串在原串中的位置 <span class="number">14</span></span><br><span class="line">  </span><br><span class="line">侵占模式：匹配原串任意位置返回的结果： <span class="keyword">false</span></span><br></pre></td></tr></table></figure>
@@ -409,15 +413,15 @@
 <h4 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h4><ul>
 <li>获取匹配</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"abc def aaa bbb"</span>.replaceAll(<span class="string">"(\\w+)\\s(\\w+)"</span>, <span class="string">"$2 $1"</span>);</span><br><span class="line"><span class="comment">// 结果是 def abc bbb aaa</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">&quot;abc def aaa bbb&quot;</span>.replaceAll(<span class="string">&quot;(\\w+)\\s(\\w+)&quot;</span>, <span class="string">&quot;$2 $1&quot;</span>);</span><br><span class="line"><span class="comment">// 结果是 def abc bbb aaa</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>非获取匹配</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN = Pattern.compile(<span class="string">"Windows (?:[\\w]+\\b)"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_POSITIVE_YES = Pattern.compile(<span class="string">"Windows (?=[\\d]+\\b)"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_POSITIVE_NO = Pattern.compile(<span class="string">"Windows (?![\\d]+\\b)"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_NEGATIVE_YES = Pattern.compile(<span class="string">"(?&lt;=CNY:)\\d+\\.\\d+"</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_NEGATIVE_NO = Pattern.compile(<span class="string">"(?&lt;!CNY:)\\b\\d+\\.\\d+"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR1 = <span class="string">"Windows 95 and Windows 98 are the successor. Then Windows 2000 and Windows Xp appeared. Windows Vista is the Latest version of the family."</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR2 = <span class="string">"CNY:100.25 USD:222.16 USD:301.3 HKD:122.1 CNY:114.4"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  Matcher noCapturing = PATTERN.matcher(STR1);</span><br><span class="line">  System.out.println(<span class="string">"\n非获取匹配结果：---------"</span>);</span><br><span class="line">  <span class="keyword">while</span> (noCapturing.find()) &#123;</span><br><span class="line">    System.out.print(noCapturing.group() + <span class="string">"\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher positiveYes = PATTERN_POSITIVE_YES.matcher(STR1);</span><br><span class="line">  System.out.println(<span class="string">"\n正向肯定预查结果：---------"</span>);</span><br><span class="line">  <span class="keyword">while</span> (positiveYes.find()) &#123;</span><br><span class="line">    System.out.print(positiveYes.group() + <span class="string">"\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher positiveNo = PATTERN_POSITIVE_NO.matcher(STR1);</span><br><span class="line">  System.out.println(<span class="string">"\n正向否定预查结果：---------"</span>);</span><br><span class="line">  <span class="keyword">while</span> (positiveNo.find()) &#123;</span><br><span class="line">    System.out.print(positiveNo.group() + <span class="string">"\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher negativeYes = PATTERN_NEGATIVE_YES.matcher(STR2);</span><br><span class="line">  System.out.println(<span class="string">"\n负向肯定预查结果：---------"</span>);</span><br><span class="line">  <span class="keyword">while</span> (negativeYes.find()) &#123;</span><br><span class="line">    System.out.print(negativeYes.group() + <span class="string">"\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher negativeNo = PATTERN_NEGATIVE_NO.matcher(STR2);</span><br><span class="line">  System.out.println(<span class="string">"\n负向否定预查结果：---------"</span>);</span><br><span class="line">  <span class="keyword">while</span> (negativeNo.find()) &#123;</span><br><span class="line">    System.out.print(negativeNo.group() + <span class="string">"\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN = Pattern.compile(<span class="string">&quot;Windows (?:[\\w]+\\b)&quot;</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_POSITIVE_YES = Pattern.compile(<span class="string">&quot;Windows (?=[\\d]+\\b)&quot;</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_POSITIVE_NO = Pattern.compile(<span class="string">&quot;Windows (?![\\d]+\\b)&quot;</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_NEGATIVE_YES = Pattern.compile(<span class="string">&quot;(?&lt;=CNY:)\\d+\\.\\d+&quot;</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern PATTERN_NEGATIVE_NO = Pattern.compile(<span class="string">&quot;(?&lt;!CNY:)\\b\\d+\\.\\d+&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR1 = <span class="string">&quot;Windows 95 and Windows 98 are the successor. Then Windows 2000 and Windows Xp appeared. Windows Vista is the Latest version of the family.&quot;</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR2 = <span class="string">&quot;CNY:100.25 USD:222.16 USD:301.3 HKD:122.1 CNY:114.4&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  Matcher noCapturing = PATTERN.matcher(STR1);</span><br><span class="line">  System.out.println(<span class="string">&quot;\n非获取匹配结果：---------&quot;</span>);</span><br><span class="line">  <span class="keyword">while</span> (noCapturing.find()) &#123;</span><br><span class="line">    System.out.print(noCapturing.group() + <span class="string">&quot;\t&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher positiveYes = PATTERN_POSITIVE_YES.matcher(STR1);</span><br><span class="line">  System.out.println(<span class="string">&quot;\n正向肯定预查结果：---------&quot;</span>);</span><br><span class="line">  <span class="keyword">while</span> (positiveYes.find()) &#123;</span><br><span class="line">    System.out.print(positiveYes.group() + <span class="string">&quot;\t&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher positiveNo = PATTERN_POSITIVE_NO.matcher(STR1);</span><br><span class="line">  System.out.println(<span class="string">&quot;\n正向否定预查结果：---------&quot;</span>);</span><br><span class="line">  <span class="keyword">while</span> (positiveNo.find()) &#123;</span><br><span class="line">    System.out.print(positiveNo.group() + <span class="string">&quot;\t&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher negativeYes = PATTERN_NEGATIVE_YES.matcher(STR2);</span><br><span class="line">  System.out.println(<span class="string">&quot;\n负向肯定预查结果：---------&quot;</span>);</span><br><span class="line">  <span class="keyword">while</span> (negativeYes.find()) &#123;</span><br><span class="line">    System.out.print(negativeYes.group() + <span class="string">&quot;\t&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Matcher negativeNo = PATTERN_NEGATIVE_NO.matcher(STR2);</span><br><span class="line">  System.out.println(<span class="string">&quot;\n负向否定预查结果：---------&quot;</span>);</span><br><span class="line">  <span class="keyword">while</span> (negativeNo.find()) &#123;</span><br><span class="line">    System.out.print(negativeNo.group() + <span class="string">&quot;\t&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">非获取匹配结果：---------</span><br><span class="line">Windows 95	Windows 98	Windows 2000	Windows Xp	Windows Vista</span><br><span class="line">正向肯定预查结果：---------</span><br><span class="line">Windows 	Windows 	Windows</span><br><span class="line">正向否定预查结果：---------</span><br><span class="line">Windows 	Windows</span><br><span class="line">负向肯定预查结果：---------</span><br><span class="line">100.25	114.4</span><br><span class="line">负向否定预查结果：---------</span><br><span class="line">222.16	301.3	122.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">非获取匹配结果：---------</span><br><span class="line">Windows 95	Windows 98	Windows 2000	Windows Xp	Windows Vista</span><br><span class="line">正向肯定预查结果：---------</span><br><span class="line">Windows 	Windows 	Windows</span><br><span class="line">正向否定预查结果：---------</span><br><span class="line">Windows 	Windows</span><br><span class="line">负向肯定预查结果：---------</span><br><span class="line">100.25	114.4</span><br><span class="line">负向否定预查结果：---------</span><br><span class="line">222.16	301.3	122.1</span><br></pre></td></tr></table></figure>
         </div>
         
           
@@ -451,9 +455,9 @@
   <div class="-mob-share-list share-body">
     
       
-        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://melodyplayer.github.io/blog/2019/1017:正则表达式进阶用法与真实调优案例/&title=正则表达式进阶用法与真实调优案例 | 旋律演奏猿&summary= 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://melodyplayer.github.io/blog/2019/1017:%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95%E4%B8%8E%E7%9C%9F%E5%AE%9E%E8%B0%83%E4%BC%98%E6%A1%88%E4%BE%8B/&title=正则表达式进阶用法与真实调优案例 | 旋律演奏猿&summary= 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？"
           
           >
           
@@ -463,9 +467,9 @@
       
     
       
-        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer noopener"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://melodyplayer.github.io/blog/2019/1017:正则表达式进阶用法与真实调优案例/&title=正则表达式进阶用法与真实调优案例 | 旋律演奏猿&summary= 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://melodyplayer.github.io/blog/2019/1017:%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95%E4%B8%8E%E7%9C%9F%E5%AE%9E%E8%B0%83%E4%BC%98%E6%A1%88%E4%BE%8B/&title=正则表达式进阶用法与真实调优案例 | 旋律演奏猿&summary= 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？"
           
           >
           
@@ -475,9 +479,9 @@
       
     
       
-        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://service.weibo.com/share/share.php?url=https://melodyplayer.github.io/blog/2019/1017:正则表达式进阶用法与真实调优案例/&title=正则表达式进阶用法与真实调优案例 | 旋律演奏猿&summary= 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://melodyplayer.github.io/blog/2019/1017:%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95%E4%B8%8E%E7%9C%9F%E5%AE%9E%E8%B0%83%E4%BC%98%E6%A1%88%E4%BE%8B/&title=正则表达式进阶用法与真实调优案例 | 旋律演奏猿&summary= 正则表达式并不陌生，但当面对复杂的正则表达式：长度长，特殊符号多，多分组的情况下，解析速度会怎样？"
           
           >
           
@@ -505,7 +509,7 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
                             <h4>
-                                <a href="/blog/2019/1117:大型网站技术架构/" rel="prev" title="大型网站技术架构">
+                                <a href="/blog/2019/1117:%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/" rel="prev" title="大型网站技术架构">
                                   
                                       大型网站技术架构
                                   
@@ -525,7 +529,7 @@
                         <span class="art-item-right" aria-hidden="true">
                             <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/blog/2019/1004:mac单机部署mysql多实例/" rel="prev" title="mac单机部署mysql多实例">
+                                <a href="/blog/2019/1004:mac%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2mysql%E5%A4%9A%E5%AE%9E%E4%BE%8B/" rel="prev" title="mac单机部署mysql多实例">
                                     
                                         mac单机部署mysql多实例
                                     
@@ -534,7 +538,7 @@
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/blog/tags/mysql/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>mysql</a>
+                                    <a class="tag" href="/blog/tags/database/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>database</a>
                                 </h6>
                             
                         </span>
@@ -641,9 +645,9 @@
           开源项目
         </a></li>
       
-        <li><a class="flat-box" title="http://ganlu.ren/" href="http://ganlu.ren/"
+        <li><a class="flat-box" title="http://ganlu.ren/" target="_blank" href="http://ganlu.ren/"
           
-            rel="nofollow"
+            rel="nofollow noopener"
           
           
           id="http:ganlu.ren">
@@ -653,9 +657,9 @@
           我的友链
         </a></li>
       
-        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
           
-            rel="nofollow"
+            rel="nofollow noopener"
           
           
           id="https:xaoxuu.comwikimaterial-x">
@@ -712,7 +716,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式基础"><span class="toc-text">正则表达式基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#真实案例：超级慢的正则表达式"><span class="toc-text">真实案例：超级慢的正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#解析目标"><span class="toc-text">解析目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试结果"><span class="toc-text">测试结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最简单的解决方案"><span class="toc-text">最简单的解决方案</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原因探索：回溯匹配"><span class="toc-text">原因探索：回溯匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#猜测：考虑字符太长，以及特殊符号的问题"><span class="toc-text">猜测：考虑字符太长，以及特殊符号的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#初步结论：非匹配字符的位置会影响正则表达式的执行效率"><span class="toc-text">初步结论：非匹配字符的位置会影响正则表达式的执行效率</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方法：采用进阶匹配模式"><span class="toc-text">解决方法：采用进阶匹配模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#正则模式：贪婪、勉强、侵占"><span class="toc-text">正则模式：贪婪、勉强、侵占</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码演示"><span class="toc-text">代码演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正则高级用法补充"><span class="toc-text">正则高级用法补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#获取匹配-Capturing"><span class="toc-text">获取匹配 Capturing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非获取匹配-Non-Capturing"><span class="toc-text">非获取匹配 Non-Capturing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码演示-1"><span class="toc-text">代码演示</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80"><span class="toc-text">正则表达式基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%9F%E5%AE%9E%E6%A1%88%E4%BE%8B%EF%BC%9A%E8%B6%85%E7%BA%A7%E6%85%A2%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">真实案例：超级慢的正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E7%9B%AE%E6%A0%87"><span class="toc-text">解析目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="toc-text">测试结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">最简单的解决方案</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0%E6%8E%A2%E7%B4%A2%EF%BC%9A%E5%9B%9E%E6%BA%AF%E5%8C%B9%E9%85%8D"><span class="toc-text">原因探索：回溯匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8C%9C%E6%B5%8B%EF%BC%9A%E8%80%83%E8%99%91%E5%AD%97%E7%AC%A6%E5%A4%AA%E9%95%BF%EF%BC%8C%E4%BB%A5%E5%8F%8A%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">猜测：考虑字符太长，以及特殊符号的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E7%BB%93%E8%AE%BA%EF%BC%9A%E9%9D%9E%E5%8C%B9%E9%85%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%BC%9A%E5%BD%B1%E5%93%8D%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%89%A7%E8%A1%8C%E6%95%88%E7%8E%87"><span class="toc-text">初步结论：非匹配字符的位置会影响正则表达式的执行效率</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9A%E9%87%87%E7%94%A8%E8%BF%9B%E9%98%B6%E5%8C%B9%E9%85%8D%E6%A8%A1%E5%BC%8F"><span class="toc-text">解决方法：采用进阶匹配模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E6%A8%A1%E5%BC%8F%EF%BC%9A%E8%B4%AA%E5%A9%AA%E3%80%81%E5%8B%89%E5%BC%BA%E3%80%81%E4%BE%B5%E5%8D%A0"><span class="toc-text">正则模式：贪婪、勉强、侵占</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%BC%94%E7%A4%BA"><span class="toc-text">代码演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%E8%A1%A5%E5%85%85"><span class="toc-text">正则高级用法补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8C%B9%E9%85%8D-Capturing"><span class="toc-text">获取匹配 Capturing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E8%8E%B7%E5%8F%96%E5%8C%B9%E9%85%8D-Non-Capturing"><span class="toc-text">非获取匹配 Non-Capturing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%BC%94%E7%A4%BA-1"><span class="toc-text">代码演示</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -798,7 +802,7 @@
     </div>
   
   <br>
-  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+  <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
 </div>
   <div>
     Use
@@ -923,10 +927,14 @@
 
 
 
-  <script src="/js/app.js"></script>
+  
+<script src="/js/app.js"></script>
 
 
-  <script src="/js/search.js"></script>
+
+  
+<script src="/js/search.js"></script>
+
 
 
 
